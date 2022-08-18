@@ -9,7 +9,23 @@ html {
 
 .page__container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1140px;
   min-width: 320px;
   margin: 0 auto;
+}
+
+.page__section-name {
+  font-size: 22px;
+  font-weight: 400;
+  position: relative;
+}
+
+.page__section-name::after {
+  content: '';
+  width: 100%;
+
+  bottom: -23px;
+  left: 0;
+  position: absolute;
+  border-bottom: 1px solid #dadada;
 }
