@@ -20,11 +20,6 @@
   font-weight: 400;
 }
 
-.aboutproject__feature-text {
-  font-size: 14px;
-  line-height: 1.43;
-}
-
 .aboutproject__feature-bar {
   display: grid;
   grid-template-columns: 1fr 4fr;

@@ -1,0 +1,40 @@
+
+.portfolio {
+  background-color: #202020;
+  padding-bottom: 125px;
+}
+
+.portfolio__section-name {
+  color: #8b8b8b;
+  margin: 0;
+}
+
+.portfolio__link {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 19px;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+
+.portfolio__link::after {
+  position: absolute;
+  content: "";
+  border-bottom: 1px solid #424242;
+  width: 100%;
+  bottom: -19px;
+  left: 0;
+}
+
+.portfolio__link:last-of-type::after {
+  width: 0;
+}
+
+.portfolio__link-img {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../images/link-arrow.svg');
+}

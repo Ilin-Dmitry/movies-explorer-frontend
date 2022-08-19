@@ -1,0 +1,42 @@
+.aboutme {
+  background-color: #202020;
+  padding-top: 110px;
+  padding-bottom: 125px;
+}
+
+.aboutme__about {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 66px;
+}
+
+.aboutme__section-header {
+  margin-top: 0;
+}
+
+.aboutme__subheader {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.aboutme__text {
+  max-width: 600px;
+}
+
+.aboutme__socials {
+  display: flex;
+}
+
+.aboutme__social {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.aboutme__photo {
+  border-radius: 10px;
+  width: 270px;
+  height: 327px;
+  object-fit: cover;
+}
