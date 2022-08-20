@@ -1,0 +1,17 @@
+.header {
+  background-color: #073042;
+  height: 74px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  background-image: url('../../images/logo.svg');
+  width: 38px;
+  height: 38px;
+}

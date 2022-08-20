@@ -1,0 +1,26 @@
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__signup {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 30px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.navigation__signin {
+  box-sizing: border-box;
+  padding: 8px 20px;
+  display: block;
+  width: 76px;
+  height: 32px;
+  background-color: #3DDC84;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 3px;
+}
