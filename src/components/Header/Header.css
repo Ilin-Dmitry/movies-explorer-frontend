@@ -5,6 +5,10 @@
   padding-bottom: 18px;
 }
 
+.header_type_movies {
+  background-color: #202020;
+}
+
 .header__container {
   display: flex;
   justify-content: space-between;

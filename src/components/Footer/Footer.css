@@ -3,6 +3,7 @@
   text-align: center;
   padding-top: 79px;
   padding-bottom: 20px;
+  flex: 0 0 auto;
 }
 
 .footer__text {

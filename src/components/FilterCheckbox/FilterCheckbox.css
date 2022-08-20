@@ -1,0 +1,36 @@
+.filtercheckbox__input {
+  position: absolute;
+  z-index: -1;
+}
+
+.filtercheckbox__label {
+  position: relative;
+  display: flex;
+  font-size: 13px;
+  align-items: center;
+}
+
+.filtercheckbox__input+.filtercheckbox__label::after {
+  position: relative;
+  box-sizing: border-box;
+  margin-left: 16px;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #ebebeb;
+  border: 2px solid #ebebeb;
+  background-image: url('../../images/shortfilms-dot.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-origin: content-box;
+  transition: background-color .2s ease, border .2s ease, background-position .2s ease;
+}
+
+.filtercheckbox__input:checked+.filtercheckbox__label::after {
+  background-color: #3DDC84;
+  border: 2px solid #3DDC84;
+  background-position: right center;
+}
