@@ -21,6 +21,9 @@ function MoviesCardList() {
         <MoviesCard />
         <MoviesCard />
       </div>
+      <div className='moviescardlist__loadmore-wrapper page__container'>
+        <button className='moviescardlist__loadmore-button'>Ещё</button>
+      </div>
     </section>
   )
 }
