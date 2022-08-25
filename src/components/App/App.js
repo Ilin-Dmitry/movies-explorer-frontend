@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         {/* <Movies /> */}
         {/* <Profile /> */}
         {/* <Register /> */}
-        <Login />
+        {/* <Login /> */}
+        <PageNotFound />
         <Footer />
     </div>
   )
