@@ -19,6 +19,11 @@
   font-weight: 400;
   color: #fff;
   text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+.portfolio__link:hover {
+  opacity: .7;
 }
 
 .portfolio__link::after {

@@ -13,8 +13,8 @@ function AboutMe() {
                 <p className='aboutme__subheader'>Фронтенд-разработчик, 35 лет</p>
                 <p className='aboutme__text page__text'>Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                 <div className='aboutme__socials'>
-                  <p  className='aboutme__social'>Facebook</p>
-                  <p  className='aboutme__social'>Github</p>
+                  <a className='aboutme__social' href='https://facebook.com' target='_blank' rel='noreferrer'>Facebook</a>
+                  <a className='aboutme__social' href='https://github.com' target='_blank' rel='noreferrer'>Github</a>
                 </div>
               </div>
               <img className='aboutme__photo' src={studentAvatar} alt="аватар"></img>

@@ -7,6 +7,7 @@ import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
+import { Element } from 'react-scroll';
 
 function Main() {
     return (
@@ -14,9 +15,9 @@ function Main() {
           <Header />
           <Promo />
           <NavTab />
-          <AboutProject />
-          <Techs />
-          <AboutMe />
+          <Element name="AboutProjectElement"><AboutProject /></Element>
+          <Element name="TechsElement"><Techs /></Element>
+          <Element name="AboutMeElement"><AboutMe /></Element>
           <Portfolio />
         </div>
     )

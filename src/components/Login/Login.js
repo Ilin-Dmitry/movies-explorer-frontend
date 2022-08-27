@@ -1,4 +1,5 @@
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
@@ -17,7 +18,7 @@ function Login() {
           </div>
 
           <button className='login__form-button page__auth-button'>Войти</button>
-          <p className='register__btn-subtext page__btn-subtext'>Ещё не зарегистрированы?<a className='register__btn-sublink page__btn-sublink' href='ya.ru'>Регистрация</a></p>
+          <p className='register__btn-subtext page__btn-subtext'>Ещё не зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signup'>Регистрация</Link></p>
       </form>
     </section>
   )

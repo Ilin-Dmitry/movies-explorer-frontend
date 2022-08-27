@@ -46,4 +46,9 @@
   font-weight: 400;
   font-size: 13px;
   margin-left: 20px;
+  transition: opacity .2s ease;
+}
+
+.footer__link:hover {
+  opacity: .7;
 }

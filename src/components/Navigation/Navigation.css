@@ -9,6 +9,11 @@
   margin-right: 30px;
   font-size: 12px;
   font-weight: 500;
+  transition: opacity ease .2s;
+}
+
+.navigation__signup:hover {
+  opacity: .7;
 }
 
 .navigation__signin {
@@ -23,4 +28,9 @@
   font-weight: 500;
   text-decoration: none;
   border-radius: 3px;
+  transition: opacity ease .2s;
+}
+
+.navigation__signin:hover {
+  opacity: .7;
 }

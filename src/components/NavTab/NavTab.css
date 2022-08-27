@@ -17,4 +17,9 @@
   line-height: 1.23;
   text-decoration: underline;
   cursor: pointer;
+  transition: opacity ease .2s;
+}
+
+.navtab__link:hover {
+  opacity: .7;
 }

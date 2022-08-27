@@ -1,9 +1,9 @@
 import './App.css';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
-// import Profile from '../Profile/Profile';
+import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
@@ -22,6 +22,12 @@ function App() {
             </Route>
             <Route path="/signin">
               <Login />
+            </Route>
+            <Route path="/movies">
+              <Movies />
+            </Route>
+            <Route path="/Profile">
+              <Profile />
             </Route>
             <Route path="*">
               <PageNotFound />

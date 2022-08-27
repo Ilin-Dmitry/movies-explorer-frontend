@@ -1,4 +1,5 @@
 import './Register.css';
+import { Link } from 'react-router-dom';
 
 function Register() {
   return (
@@ -23,7 +24,7 @@ function Register() {
 
         <p className='register__form-error page__auth-error'>Что-то пошло не так</p>
         <button className='register__form-button page__auth-button'>Зарегистрироваться</button>
-        <p className='register__btn-subtext page__btn-subtext'>Уже зарегистрированы? <a className='register__btn-sublink page__btn-sublink' href='ya.ru'>Войти</a></p>
+        <p className='register__btn-subtext page__btn-subtext'>Уже зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signin'>Войти</Link></p>
       </form>
 
     </section>

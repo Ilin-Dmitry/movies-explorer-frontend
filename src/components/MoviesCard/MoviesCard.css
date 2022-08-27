@@ -27,6 +27,7 @@
   width: 14px;
   height: 12px;
   background-image: url('../../images/like-icon.svg');
+  cursor: pointer;
 }
 
 .moviescard__caption {
@@ -61,4 +62,14 @@
   color: #fff;
   font-size: 12px;
   font-weight: 500;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.moviescardlist__loadmore-button:hover {
+  opacity: .8;
+}
+
+.moviescardlist__loadmore-button:active {
+  opacity: .6;
 }
