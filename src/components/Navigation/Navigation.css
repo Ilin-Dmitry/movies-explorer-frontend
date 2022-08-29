@@ -3,20 +3,29 @@
   align-items: center;
 }
 
-.navigation__signup {
+.navigation__link {
   color: #fff;
   text-decoration: none;
-  margin-right: 30px;
-  font-size: 12px;
-  font-weight: 500;
+  margin-left: 30px;
+  font-size: 14px;
+  font-weight: 400;
   transition: opacity ease .2s;
 }
 
-.navigation__signup:hover {
+.navigation__link_active {
+  font-weight: 500;
+}
+
+.navigation__link_signup {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.navigation__link:hover {
   opacity: .7;
 }
 
-.navigation__signin {
+.navigation__link_signin {
   box-sizing: border-box;
   padding: 8px 20px;
   display: block;
@@ -33,4 +42,23 @@
 
 .navigation__signin:hover {
   opacity: .7;
+}
+
+.navigation__link_profile {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.navigation__link-icon {
+  background-color: #313131;
+  border-radius: 50px;
+  background-image: url('../../images/profile-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 7px;
 }

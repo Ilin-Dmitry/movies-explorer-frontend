@@ -1,7 +1,10 @@
 import './App.css';
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { IsLoggedContext } from '../../contexts/IsLoggedContext';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
@@ -9,7 +12,10 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(true);
+
   return (
+    <IsLoggedContext.Provider value={isLogged}>
 
       <div className='page'>
 
@@ -26,22 +32,19 @@ function App() {
             <Route path="/movies">
               <Movies />
             </Route>
-            <Route path="/Profile">
+            <Route path="/saved-movies">
+              <SavedMovies />
+            </Route>
+            <Route path="/profile">
               <Profile />
             </Route>
             <Route path="*">
               <PageNotFound />
             </Route>
-
-            {/* <Main /> */}
-            {/* <Movies /> */}
-            {/* <Profile /> */}
-            {/* <Register /> */}
-            {/* <Login /> */}
-            {/* <PageNotFound /> */}
           </Switch>
           <Footer />
       </div>
+    </IsLoggedContext.Provider>
   )
 }
 

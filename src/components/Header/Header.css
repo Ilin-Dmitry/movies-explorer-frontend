@@ -1,8 +1,12 @@
 .header {
-  background-color: #073042;
+  background-color: #202020;
   height: 74px;
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+.header_module_main {
+  background-color: #073042;
 }
 
 .header_type_movies {

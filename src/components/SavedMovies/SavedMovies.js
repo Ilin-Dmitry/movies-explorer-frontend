@@ -1,15 +1,14 @@
-import './Movies.css';
+import './SavedMovies.css';
 import { useState } from 'react';
 import Header from '../Header/Header';
-import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 
-
-function Movies() {
+function SavedMovies() {
   const [ isMoviesShown, setIsMoviesShown ] = useState(true);
   return (
-    <div className="movies">
+    <div className='moviescardlist'>
       <Header />
       <SearchForm />
       { isMoviesShown ? <MoviesCardList /> : <Preloader />}
@@ -17,4 +16,4 @@ function Movies() {
   )
 }
 
-export default Movies;
+export default SavedMovies;

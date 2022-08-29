@@ -10,17 +10,17 @@ import Footer from '../Footer/Footer';
 import { Element } from 'react-scroll';
 
 function Main() {
-    return (
-        <div className='main'>
-          <Header />
-          <Promo />
-          <NavTab />
-          <Element name="AboutProjectElement"><AboutProject /></Element>
-          <Element name="TechsElement"><Techs /></Element>
-          <Element name="AboutMeElement"><AboutMe /></Element>
-          <Portfolio />
-        </div>
-    )
+  return (
+      <div className='main'>
+        <Header isMain={true}/>
+        <Promo />
+        <NavTab />
+        <Element name="AboutProjectElement"><AboutProject /></Element>
+        <Element name="TechsElement"><Techs /></Element>
+        <Element name="AboutMeElement"><AboutMe /></Element>
+        <Portfolio />
+      </div>
+  )
 }
 
 export default Main;

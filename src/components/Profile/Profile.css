@@ -55,10 +55,18 @@
   font-size: 13px;
   font-weight: 400;
   transition: opacity .2s ease;
+  margin: 0 auto;
+  background-color: #202020;
+  border: none;
+  cursor: pointer;
 }
 
 .profile__btn:hover {
   opacity: .7;
+}
+
+.profile__btn:active {
+  opacity: .5;
 }
 
 .profile__edit-btn {
