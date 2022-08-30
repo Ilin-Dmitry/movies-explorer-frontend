@@ -27,4 +27,16 @@
   margin-top: auto;
   margin-bottom: 60px;
   font-size: 14px;
+  background-color: #202020;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.pagenotfound__link:hover {
+  opacity: .8;
+}
+
+.pagenotfound__link:active {
+  opacity: .6;
 }

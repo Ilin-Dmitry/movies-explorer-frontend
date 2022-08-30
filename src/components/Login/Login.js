@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Login() {
   return (
     <section className='login'>
-      <div className='login__logo page__logo' />
+      <Link to='/'><div className='login__logo page__logo' /></Link>
       <h3 className='login__heading page__auth-heading'>Рады видеть!</h3>
       <form className='login__form page__auth-form'>
         <div className='login__input-wrapper page__input-wrapper'>

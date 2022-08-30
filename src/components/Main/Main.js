@@ -19,6 +19,7 @@ function Main() {
         <Element name="TechsElement"><Techs /></Element>
         <Element name="AboutMeElement"><AboutMe /></Element>
         <Portfolio />
+        <Footer />
       </div>
   )
 }

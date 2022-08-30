@@ -1,14 +1,14 @@
 import './MoviesCard.css';
 import examplePhoto from '../../images/example-photo.jpg';
 
-function MoviesCard () {
+function MoviesCard ({poster, title, duration}) {
   return (
     <div className='moviescard'>
-      <img  className='moviescard__cover' src={examplePhoto} alt="photod" />
+      <img  className='moviescard__cover' src={poster} alt="photod" />
       <div className='moviescard__info'>
-        <p className='moviescard__caption'>Какой-то текст Какой-то текстКакой-то текстКакой-то текстКакой-то текст</p>
+        <p className='moviescard__caption'>{title}</p>
         <div className='moviescard__like'></div>
-        <p className='moviescard__length'>1ч 3м</p>
+        <p className='moviescard__length'>{duration}</p>
       </div>
     </div>
   )

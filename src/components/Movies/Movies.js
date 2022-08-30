@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
+import Footer from '../Footer/Footer';
 
 
 function Movies() {
@@ -13,6 +14,7 @@ function Movies() {
       <Header />
       <SearchForm />
       { isMoviesShown ? <MoviesCardList /> : <Preloader />}
+      <Footer />
     </div>
   )
 }

@@ -1,29 +1,29 @@
 import './MoviesCardList.css';
+import { useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import { defaultMoviesList } from '../../utils/defaultMoviesList';
 
 function MoviesCardList() {
+  const [ maxCards, setMaxCards ] = useState(12)
+
+  function showMoreCards () {
+    setMaxCards(maxCards + 12);
+  }
+
   return (
     <section className='moviescardlist'>
       <div className='moviescardlist__container page__container'>
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
+        {defaultMoviesList.length === 0 && <p className='moviescardlist__text'>По вашему запросу фильмов не найдено</p>}
+        {defaultMoviesList.map((movie, i) => {
+          if (i < maxCards) {
+          return <MoviesCard title={movie.title} duration={movie.duration} poster={movie.poster} key={i}/> }
+        })}
       </div>
-      <div className='moviescardlist__loadmore-wrapper page__container'>
-        <button className='moviescardlist__loadmore-button'>Ещё</button>
-      </div>
+      { defaultMoviesList.length > maxCards
+      && <div className='moviescardlist__loadmore-wrapper page__container'>
+          <button className='moviescardlist__loadmore-button' onClick={showMoreCards}>Ещё</button>
+         </div>}
+
     </section>
   )
 }

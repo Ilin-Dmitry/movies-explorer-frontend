@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Register() {
   return (
     <section className='register'>
-      <div className='register__logo page__logo' />
+      <Link to='/'><div className='register__logo page__logo' /></Link>
       <h3 className='register__heading page__auth-heading'>Добро пожаловать!</h3>
       <form className='register__form page__auth-form'>
         <div className='register__input-wrapper page__input-wrapper'>
