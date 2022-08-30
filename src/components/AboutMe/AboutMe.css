@@ -1,30 +1,40 @@
 .aboutme {
   background-color: #202020;
   padding-top: 110px;
-  padding-bottom: 125px;
+  padding-bottom: 100px;
 }
 
 .aboutme__about {
   display: flex;
   justify-content: space-between;
-  margin-top: 66px;
+  margin-top: 90px;
+}
+
+.aboutme__personals {
+  display: flex;
+  flex-direction: column;
 }
 
 .aboutme__section-header {
   margin-top: 0;
+  margin-bottom: 18px;
 }
 
 .aboutme__subheader {
   font-size: 18px;
   font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 26px;
 }
 
 .aboutme__text {
   max-width: 600px;
+  margin: 0;
 }
 
 .aboutme__socials {
   display: flex;
+  margin-top: auto;
 }
 
 .aboutme__social {
@@ -46,4 +56,5 @@
   width: 270px;
   height: 327px;
   object-fit: cover;
+  margin-left: 49px;
 }

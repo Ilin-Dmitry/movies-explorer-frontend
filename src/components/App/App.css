@@ -8,10 +8,16 @@
 }
 
 .page__container {
-  width: 100%;
+  /* width: 100%; */
   max-width: 1140px;
   min-width: 320px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .page__container {
+    padding: 0 50px;
+  }
 }
 
 .page__logo {
@@ -25,6 +31,7 @@
   font-weight: 400;
   position: relative;
   text-align: left;
+  margin-top: 0;
 }
 
 .page__section-name::after {
@@ -46,6 +53,7 @@
 .page__text {
   font-size: 14px;
   line-height: 1.43;
+  margin-bottom: 0;
 }
 
 .page__auth-heading {

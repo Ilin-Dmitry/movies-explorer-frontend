@@ -16,11 +16,11 @@ function AboutProject() {
           </div>
         </div>
         <div className='aboutproject__feature-bar'>
-            <div className='aboutproject__bar-cell aboutproject__bar-cell_1'>1 неделя</div>
-            <div className='aboutproject__bar-cell aboutproject__bar-cell_2'>4 недели</div>
-            <div className='aboutproject__bar-cell aboutproject__bar-cell_3'>Back-end</div>
-            <div className='aboutproject__bar-cell aboutproject__bar-cell_4'>Front-end</div>
-          </div>
+          <div className='aboutproject__bar-cell aboutproject__bar-cell_1'>1 неделя</div>
+          <div className='aboutproject__bar-cell aboutproject__bar-cell_2'>4 недели</div>
+          <div className='aboutproject__bar-cell aboutproject__bar-cell_3'>Back-end</div>
+          <div className='aboutproject__bar-cell aboutproject__bar-cell_4'>Front-end</div>
+        </div>
       </div>
     </section>
   )

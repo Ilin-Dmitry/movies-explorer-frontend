@@ -15,8 +15,8 @@ function Portfolio() {
               <p className='portfolio__link-text'>↗</p>
             </a>
             <a className='portfolio__link' href=" https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/" target="_blank">
-              <p className='portfolio__link-text'>Одностраничное приложение</p>
-              <p className='portfolio__link-text'>↗</p>
+              <p className='portfolio__link-text portfolio__link-text_last'>Одностраничное приложение</p>
+              <p className='portfolio__link-text portfolio__link-text_last'>↗</p>
             </a>
           </div>
         </div>

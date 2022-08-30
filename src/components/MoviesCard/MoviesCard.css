@@ -1,7 +1,7 @@
 .moviescard {
   box-sizing: border-box;
-  width: 364px;
-  height: 281px;
+  max-width: 364px;
+  max-height: 281px;
   overflow: hidden;
   background-color: #222;
   border-radius: 6px;

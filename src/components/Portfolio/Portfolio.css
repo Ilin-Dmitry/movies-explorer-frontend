@@ -10,16 +10,23 @@
   margin: 0;
 }
 
+.portfolio__links {
+  margin-top: 19px;
+}
+
 .portfolio__link {
   display: flex;
   justify-content: space-between;
   position: relative;
-  margin-top: 19px;
   font-size: 30px;
   font-weight: 400;
   color: #fff;
   text-decoration: none;
   transition: opacity .2s ease;
+}
+
+.portfolio__link-text_last {
+  margin-bottom: 0;
 }
 
 .portfolio__link:hover {
@@ -31,7 +38,7 @@
   content: "";
   border-bottom: 1px solid #424242;
   width: 100%;
-  bottom: -19px;
+  bottom: -6px;
   left: 0;
 }
 
