@@ -2,10 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 37px 24px;
+  padding-top: 70px;
 }
 
 .moviescardlist__text {
   font-size: 18px;
   color: #8b8b8b;
 
+}
+
+.moviescardlist__loadmore-wrapper {
+  margin-top: 10px;
 }
