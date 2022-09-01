@@ -7,6 +7,12 @@
   margin-top: auto;
 }
 
+@media screen and (max-width: 900px) {
+  .footer__container {
+    padding: 0 30px;
+  }
+}
+
 .footer__text {
   font-size: 13px;
   color: #8b8b8b;

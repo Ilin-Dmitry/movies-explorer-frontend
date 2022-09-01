@@ -4,6 +4,13 @@
   padding-bottom: 110px;
 }
 
+@media screen and (max-width: 900px) {
+  .aboutproject {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
 
 
 .aboutproject__features {
@@ -23,6 +30,13 @@
 .aboutproject__feature-heading {
   font-size: 20px;
   font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutproject__feature-text {
+    font-size: 12px;
+  }
 }
 
 .aboutproject__feature-bar {
@@ -30,6 +44,12 @@
   grid-template-columns: 1fr 4fr;
   text-align: center;
   margin-top: 110px;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutproject__feature-bar {
+    margin-top: 93px;
+  }
 }
 
 .aboutproject__bar-cell {

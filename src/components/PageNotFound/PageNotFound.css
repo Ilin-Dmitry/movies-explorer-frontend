@@ -15,13 +15,11 @@
   font-weight: 400;
   margin-top: auto;
   line-height: 1;
-  /* flex: 1 0 auto; */
 }
 
 .pagenotfound__subtitle {
   font-size: 16px;
   margin: 5px 0;
-  /* flex: 1 0 auto; */
 }
 
 .pagenotfound__link {
@@ -29,7 +27,6 @@
   text-decoration: none;
   color: #4285F4;
   margin-top: 184px;
-  /* margin-bottom: 60px; */
   font-size: 14px;
   background-color: #202020;
   border: none;
