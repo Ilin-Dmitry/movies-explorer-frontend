@@ -9,11 +9,11 @@ function Profile() {
         <h3 className='profile__title'>Привет, Виталий!</h3>
         <form className='profile__form'>
           <div className='profile__input-wrapper'>
-            <label for="profile-name" className='profile__input-label'>Имя</label>
+            <label htmlFor="profile-name" className='profile__input-label'>Имя</label>
             <input className='profile__form-input' id="profile-name" placeholder='Виталий' />
           </div>
           <div className='profile__input-wrapper'>
-            <label for="profile-mail" className='profile__input-label'>E-mail</label>
+            <label htmlFor="profile-mail" className='profile__input-label'>E-mail</label>
             <input className='profile__form-input' id="profile-mail" placeholder='pochta@yandex.ru' />
           </div>
         </form>

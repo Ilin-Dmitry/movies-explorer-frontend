@@ -4,3 +4,7 @@
   margin: 70px auto;
   flex: 1 0 auto;
 }
+
+.login__form-button {
+  margin-top: 221px;
+}

@@ -6,11 +6,15 @@
   align-items: center;
 }
 
+.pagenotfound__wrapper {
+  text-align: center;
+}
 .pagenotfound__title {
   margin: 0;
   font-size: 140px;
   font-weight: 400;
   margin-top: auto;
+  line-height: 1;
   /* flex: 1 0 auto; */
 }
 
@@ -24,8 +28,8 @@
   color: #fff;
   text-decoration: none;
   color: #4285F4;
-  margin-top: auto;
-  margin-bottom: 60px;
+  margin-top: 184px;
+  /* margin-bottom: 60px; */
   font-size: 14px;
   background-color: #202020;
   border: none;

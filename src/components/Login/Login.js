@@ -8,12 +8,12 @@ function Login() {
       <h3 className='login__heading page__auth-heading'>Рады видеть!</h3>
       <form className='login__form page__auth-form'>
         <div className='login__input-wrapper page__input-wrapper'>
-          <label className='login__input-label page__auth-input-label' for='login-email'>E-mail</label>
+          <label className='login__input-label page__auth-input-label' htmlFor='login-email'>E-mail</label>
           <input className='login__input page__auth-input' id='login-email' placeholder='pochta@yandex.ru' type='email'/>
         </div>
 
           <div className='login__input-wrapper page__input-wrapper'>
-            <label className='login__input-label page__auth-input-label' for='login-password'>Пароль</label>
+            <label className='login__input-label page__auth-input-label' htmlFor='login-password'>Пароль</label>
             <input className='login__input page__auth-input' id='login-password' placeholder='' type='password'/>
           </div>
 

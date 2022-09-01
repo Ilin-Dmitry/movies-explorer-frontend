@@ -28,6 +28,7 @@
 
 .profile__input-wrapper:last-of-type {
   border: none;
+  padding-bottom: 0;
 }
 
 .profile__form-input {
