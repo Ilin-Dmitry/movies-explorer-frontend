@@ -36,6 +36,7 @@
   width: 80px;
   height: 34px;
   border-radius: 48px;
+  border: none;
 }
 
 .searchform__button::after {
