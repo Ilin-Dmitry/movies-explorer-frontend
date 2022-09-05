@@ -8,3 +8,12 @@
 .login__form-button {
   margin-top: 221px;
 }
+
+@media screen and (max-width: 900px) {
+  .login {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+  }
+}

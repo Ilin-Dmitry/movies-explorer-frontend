@@ -3,7 +3,7 @@ import { useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { defaultMoviesList } from '../../utils/defaultMoviesList';
 
-function MoviesCardList() {
+function MoviesCardList({type}) {
   const [ maxCards, setMaxCards ] = useState(12)
 
   function showMoreCards () {
@@ -16,7 +16,7 @@ function MoviesCardList() {
         {defaultMoviesList.length === 0 && <p className='moviescardlist__text'>По вашему запросу фильмов не найдено</p>}
         {defaultMoviesList.map((movie, i) => {
           if (i < maxCards) {
-          return <MoviesCard title={movie.title} duration={movie.duration} poster={movie.poster} key={i}/> }
+          return <MoviesCard title={movie.title} duration={movie.duration} poster={movie.poster} type={type} key={i}/> }
         })}
       </div>
       { defaultMoviesList.length > maxCards

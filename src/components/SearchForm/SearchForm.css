@@ -6,11 +6,28 @@
   padding-bottom: 47px;
 }
 
+@media screen and (max-width: 900px) {
+  .searchform {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .searchform__container {
+    padding: 0 30px;
+  }
+}
+
 .searchform__wrapper {
   display: flex;
   width: 100%;
   position: relative;
   margin-bottom: 47px;
+}
+
+@media screen {
+  .searchform__wrapper {
+    margin-bottom: 43px;
+  }
 }
 
 .searchform__input {
@@ -20,6 +37,10 @@
   color: #fff;
   font-size: 28px;
   font-weight: 500;
+}
+
+.searchform__input:focus {
+  outline: none;
 }
 
 .searchform__input::placeholder {

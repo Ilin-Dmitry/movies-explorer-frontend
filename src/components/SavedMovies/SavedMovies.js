@@ -12,7 +12,7 @@ function SavedMovies() {
     <div className='savedmovies'>
       <Header />
       <SearchForm />
-      { isMoviesShown ? <MoviesCardList /> : <Preloader />}
+      { isMoviesShown ? <MoviesCardList type='saved' /> : <Preloader />}
       <Footer />
     </div>
   )

@@ -8,6 +8,14 @@
   display: flex;
   font-size: 13px;
   align-items: center;
+  cursor: pointer;
+
+}
+
+@media screen and (max-width: 900px) {
+  .filtercheckbox__label {
+    flex-direction: row-reverse ;
+  }
 }
 
 .filtercheckbox__input+.filtercheckbox__label::before {
@@ -27,6 +35,13 @@
   background-position: left center;
   background-origin: content-box;
   transition: background-color .2s ease, border .2s ease, background-position .2s ease;
+}
+
+@media screen and (max-width: 900px) {
+  .filtercheckbox__input+.filtercheckbox__label::before {
+    margin-left: 16px;
+    margin-right: 0;
+  }
 }
 
 .filtercheckbox__input:checked+.filtercheckbox__label::before {

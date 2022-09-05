@@ -5,3 +5,12 @@
   flex: 1 0 auto;
 }
 
+@media screen and (max-width: 900px) {
+  .register {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+  }
+}
+
