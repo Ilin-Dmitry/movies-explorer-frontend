@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 550px) {
+  .burgericon {
+    right: 23px;
+  }
+}
+
 .burgericon_open {
   position: fixed;
 }

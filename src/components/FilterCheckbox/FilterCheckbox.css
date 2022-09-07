@@ -18,6 +18,13 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .filtercheckbox__label {
+    justify-content: center;
+    font-size: 11px;
+  }
+}
+
 .filtercheckbox__input+.filtercheckbox__label::before {
   position: relative;
   box-sizing: border-box;

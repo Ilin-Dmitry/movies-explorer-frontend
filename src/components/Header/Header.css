@@ -12,6 +12,11 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .header__container {
+    padding: 0 14px;
+  }
+}
 
 .header_module_main {
   background-color: #073042;
