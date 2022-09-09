@@ -17,9 +17,21 @@
   line-height: 1;
 }
 
+@media screen and (max-width: 550px) {
+  .pagenotfound__title {
+    font-size: 80px
+  }
+}
+
 .pagenotfound__subtitle {
   font-size: 16px;
   margin: 5px 0;
+}
+
+@media screen and (max-width: 550px) {
+  .pagenotfound__subtitle {
+    font-size: 12px
+  }
 }
 
 .pagenotfound__link {
@@ -32,6 +44,12 @@
   border: none;
   cursor: pointer;
   transition: opacity .2s ease;
+}
+
+@media screen and (max-width: 550px) {
+  .pagenotfound__link {
+    font-size: 12px
+  }
 }
 
 .pagenotfound__link:hover {

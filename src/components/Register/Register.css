@@ -14,3 +14,39 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .register__logo {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register__heading {
+    margin: 50px auto 80px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register__form {
+    margin: 0;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register__input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register__form-button {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .register__btn-subtext {
+    font-size: 12px;
+  }
+}

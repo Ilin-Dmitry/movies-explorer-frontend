@@ -121,6 +121,12 @@
   padding: 5px 0 10px;
 }
 
+@media screen and (max-width: 550px) {
+  .page__auth-input {
+    width: auto;
+  }
+}
+
 .page__auth-input::placeholder {
   color: #fff;
 }
