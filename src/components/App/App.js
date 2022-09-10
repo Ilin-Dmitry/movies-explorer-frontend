@@ -42,7 +42,6 @@ function App() {
               <PageNotFound />
             </Route>
           </Switch>
-          {/* <Footer /> */}
       </div>
     </IsLoggedContext.Provider>
   )
