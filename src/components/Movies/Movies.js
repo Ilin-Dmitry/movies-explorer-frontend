@@ -12,8 +12,10 @@ function Movies() {
   return (
     <div className="movies">
       <Header />
-      <SearchForm />
-      { isMoviesShown ? <MoviesCardList /> : <Preloader />}
+      <main>
+        <SearchForm />
+        { isMoviesShown ? <MoviesCardList /> : <Preloader />}
+      </main>
       <Footer />
     </div>
   )

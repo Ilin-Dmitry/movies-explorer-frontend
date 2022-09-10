@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Register() {
   return (
-    <section className='register'>
+    <main className='register'>
       <Link to='/'><div className='register__logo page__logo' /></Link>
       <h3 className='register__heading page__auth-heading'>Добро пожаловать!</h3>
       <form className='register__form page__auth-form'>
@@ -27,7 +27,7 @@ function Register() {
         <p className='register__btn-subtext page__btn-subtext'>Уже зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signin'>Войти</Link></p>
       </form>
 
-    </section>
+    </main>
   )
 }
 

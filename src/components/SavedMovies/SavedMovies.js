@@ -11,8 +11,10 @@ function SavedMovies() {
   return (
     <div className='savedmovies'>
       <Header />
-      <SearchForm />
-      { isMoviesShown ? <MoviesCardList type='saved' /> : <Preloader />}
+      <main>
+        <SearchForm />
+        { isMoviesShown ? <MoviesCardList type='saved' /> : <Preloader />}
+      </main>
       <Footer />
     </div>
   )

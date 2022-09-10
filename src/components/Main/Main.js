@@ -13,12 +13,14 @@ function Main() {
   return (
       <div className='main'>
         <Header isMain={true}/>
-        <Promo />
-        <NavTab />
-        <Element name="AboutProjectElement"><AboutProject /></Element>
-        <Element name="TechsElement"><Techs /></Element>
-        <Element name="AboutMeElement"><AboutMe /></Element>
-        <Portfolio />
+        <main>
+          <Promo />
+          <NavTab />
+          <Element name="AboutProjectElement"><AboutProject /></Element>
+          <Element name="TechsElement"><Techs /></Element>
+          <Element name="AboutMeElement"><AboutMe /></Element>
+          <Portfolio />
+        </main>
         <Footer />
       </div>
   )
