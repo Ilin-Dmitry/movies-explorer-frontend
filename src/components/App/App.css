@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   color: #fff;
-  font-family: Inter;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   min-height: 100vh;
   background-color: #202020;
 }
 
 .page__container {
-  /* width: 100%; */
   max-width: 1140px;
   margin: 0 auto;
 }
