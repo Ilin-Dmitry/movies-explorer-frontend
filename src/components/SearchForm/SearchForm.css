@@ -92,6 +92,16 @@
   height: 34px;
   border-radius: 48px;
   border: none;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.searchform__button:hover {
+  opacity: .8;
+}
+
+.searchform__button:active {
+  opacity: .6;
 }
 
 .searchform__button::after {
