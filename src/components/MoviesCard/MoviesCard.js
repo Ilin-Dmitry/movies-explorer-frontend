@@ -9,7 +9,7 @@ function MoviesCard ({poster, title, duration, type}) {
       <img  className='moviescard__cover' src={poster} alt="photod" />
       <div className='moviescard__info'>
         <p className='moviescard__caption'>{title}</p>
-        {type === 'saved' ? <div className='moviescard__delete'></div> : <div className='moviescard__like'></div> }
+        {type === 'saved' ? <button className='moviescard__delete' type='button'></button> : <button className='moviescard__like' type='button'></button> }
         <p className='moviescard__length'>{duration}</p>
       </div>
     </div>

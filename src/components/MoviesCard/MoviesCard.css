@@ -63,18 +63,34 @@
 }
 
 .moviescard__like {
+  background: none;
+  border: none;
   display: inline-block;
   width: 14px;
   height: 12px;
   background-image: url('../../images/like-icon.svg');
   cursor: pointer;
   margin-right: 8px;
+  transition: opacity .2s linear;
+}
+
+.moviescard__like:hover {
+  opacity: .8;
+}
+
+.moviescard__like:active {
+  opacity: .6;
 }
 
 @media screen and (max-width: 550px) {
   .moviescard__like {
     margin-right: 2px;
   }
+}
+
+.moviescard__delete {
+  background: none;
+  border: none;
 }
 
 .moviescard:hover .moviescard__delete {

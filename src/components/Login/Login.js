@@ -17,7 +17,7 @@ function Login() {
             <input className='login__input page__auth-input' id='login-password' placeholder='' type='password'/>
           </div>
 
-          <button className='login__form-button page__auth-button'>Войти</button>
+          <button className='login__form-button page__auth-button' type='submit'>Войти</button>
           <p className='register__btn-subtext page__btn-subtext'>Ещё не зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signup'>Регистрация</Link></p>
       </form>
     </section>

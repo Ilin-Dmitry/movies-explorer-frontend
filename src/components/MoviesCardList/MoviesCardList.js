@@ -21,7 +21,7 @@ function MoviesCardList({type}) {
       </div>
       { defaultMoviesList.length > maxCards
       && <div className='moviescardlist__loadmore-wrapper page__container'>
-          <button className='moviescardlist__loadmore-button' onClick={showMoreCards}>Ещё</button>
+          <button className='moviescardlist__loadmore-button' type='button' onClick={showMoreCards}>Ещё</button>
          </div>}
 
     </section>
