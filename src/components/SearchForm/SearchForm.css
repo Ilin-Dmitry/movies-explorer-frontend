@@ -71,6 +71,10 @@
   outline: none;
 }
 
+.searchform__input:focus + .searchform__button::after {
+  border-bottom: 1px solid #4285F4;
+}
+
 .searchform__input::placeholder {
   color: #8b8b8b;
   font-size: 28px;
@@ -111,4 +115,5 @@
   border-bottom: 1px solid #424242;
   position: absolute;
   width: 100%;
+  transition: border .2s linear;
 }
