@@ -31,11 +31,11 @@
 
 .burgericon__line_1 {
   top: 0;
-  transition: rotate .2s linear, top .2s linear;
+  transition: transform .2s linear, top .2s linear;
 }
 
 .burgericon_open .burgericon__line_1 {
-  rotate: 45deg;
+  transform: rotate(45deg);
   top: 9px;
 }
 
@@ -50,76 +50,10 @@
 
 .burgericon__line_3 {
   top: 20px;
-  transition: rotate .2s linear, top .2s linear;
+  transition: transform .2s linear, top .2s linear;
 }
 
 .burgericon_open .burgericon__line_3 {
-  rotate: -45deg;
+  transform: rotate(-45deg);
   top: 9px;
 }
-
-/* .burgericon .burgericon__line_1 {
-  animation-name: rotate-right;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-play-state: paused;
-  animation-fill-mode: forwards;
-}
-
-.burgericon .burgericon__line_2 {
-  animation-name: lineout;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-play-state: paused;
-  animation-fill-mode: forwards;
-}
-
-.burgericon .burgericon__line_3 {
-  animation-name: rotate-left;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-play-state: paused;
-  animation-fill-mode: forwards;
-} */
-
-/* .burgericon_open .burgericon__line_1 {
-  animation-name: rotate-right;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
-.burgericon_open .burgericon__line_2 {
-  animation-name: lineout;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards
-}
-
-.burgericon_open .burgericon__line_3 {
-  animation-name: rotate-left;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
-.burgericon_close .burgericon__line_1 {
-  animation-name: rotate-right;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: backwards;
-}
-
-.burgericon_close .burgericon__line_2 {
-  animation-name: lineout;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: backwards;
-}
-
-.burgericon_close .burgericon__line_3 {
-  animation-name: rotate-left;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: backwards;
-} */

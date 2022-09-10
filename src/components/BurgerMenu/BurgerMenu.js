@@ -6,7 +6,6 @@ function BurgerMenu() {
   function changeUnderlayerClass() {
 
     const underlayer = document.querySelector('.burger__underlayer');
-    console.log('underlayer =>', underlayer)
     underlayer.classList.toggle('burger__underlayer_opened');
   }
   return (
