@@ -1,0 +1,142 @@
+.aboutme {
+  background-color: #202020;
+  padding-top: 110px;
+  padding-bottom: 100px;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutme {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+.aboutme__about {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 90px;
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__about {
+    flex-direction: column-reverse;
+  }
+}
+
+.aboutme__personals {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutme__section-header {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutme__section-header {
+    font-size: 40px;
+    line-height: 1;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__section-header {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+}
+
+.aboutme__subheader {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 26px;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutme__subheader {
+    font-size: 12px;
+  }
+}
+
+.aboutme__text {
+  max-width: 600px;
+  margin: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__subheader {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .aboutme__text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__text {
+    font-size: 11px;
+  }
+}
+
+.aboutme__socials {
+  display: flex;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__socials {
+    margin-top: 40px;
+  }
+}
+
+.aboutme__social {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity .2s ease;
+}
+
+.aboutme__social:hover {
+  opacity: .7;
+}
+
+.aboutme__photo {
+  border-radius: 10px;
+  width: 270px;
+  height: 327px;
+  object-fit: cover;
+  margin-left: 49px;
+}
+
+@media screen and (max-width: 900px) {
+  .aboutme__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aboutme__photo {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    margin-bottom: 40px;
+    /* height: 307px; */
+  }
+}

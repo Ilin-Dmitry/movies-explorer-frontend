@@ -1,0 +1,119 @@
+.searchform {
+  background-color: #202020;
+  height: 100px;
+  width: 100%;
+  padding-top: 70px;
+  padding-bottom: 47px;
+}
+
+@media screen and (max-width: 900px) {
+  .searchform {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .searchform {
+    padding-top: 84px;
+    padding-bottom: 52px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .searchform__container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .searchform__container {
+    padding: 0 14px;
+  }
+}
+
+.searchform__wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 47px;
+}
+
+@media screen {
+  .searchform__wrapper {
+    margin-bottom: 43px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .searchform__wrapper {
+    margin-bottom: 50px;
+  }
+}
+
+.searchform__input {
+  background-color: #202020;
+  border: none;
+  width: 100%;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 550px) {
+  .searchform__input {
+    font-size: 18px;
+    flex: 1 0 0;
+  }
+}
+
+.searchform__input:focus {
+  outline: none;
+}
+
+.searchform__input:focus + .searchform__button::after {
+  border-bottom: 1px solid #4285F4;
+}
+
+.searchform__input::placeholder {
+  color: #8b8b8b;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 550px) {
+  .searchform__input::placeholder {
+    font-size: 18px;
+  }
+}
+
+.searchform__button {
+  background-color: #4285F4;
+  background-image: url('../../images/search-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 80px;
+  height: 34px;
+  border-radius: 48px;
+  border: none;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.searchform__button:hover {
+  opacity: .8;
+}
+
+.searchform__button:active {
+  opacity: .6;
+}
+
+.searchform__button::after {
+  content: '';
+  bottom: -13px;
+  right: 0;
+  border-bottom: 1px solid #424242;
+  position: absolute;
+  width: 100%;
+  transition: border .2s linear;
+}

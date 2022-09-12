@@ -1,0 +1,59 @@
+
+.burgericon {
+  position: absolute;
+  z-index: 100;
+  top: 26px;
+  right: 38px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .burgericon {
+    right: 23px;
+  }
+}
+
+.burgericon_open {
+  position: fixed;
+}
+
+.burgericon__line {
+  top: 20px;
+  position: absolute;
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+  margin-bottom: 7px;
+
+}
+
+.burgericon__line_1 {
+  top: 0;
+  transition: transform .2s linear, top .2s linear;
+}
+
+.burgericon_open .burgericon__line_1 {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.burgericon__line_2 {
+  top: 10px;
+  transition: width .2s linear;
+}
+
+.burgericon_open .burgericon__line_2 {
+  width: 0;
+}
+
+.burgericon__line_3 {
+  top: 20px;
+  transition: transform .2s linear, top .2s linear;
+}
+
+.burgericon_open .burgericon__line_3 {
+  transform: rotate(-45deg);
+  top: 9px;
+}

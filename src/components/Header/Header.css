@@ -1,0 +1,32 @@
+.header {
+  box-sizing: border-box;
+  background-color: #202020;
+  height: 74px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+@media screen and (max-width: 1023px) {
+  .header__container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header__container {
+    padding: 0 14px;
+  }
+}
+
+.header_module_main {
+  background-color: #073042;
+}
+
+.header_type_movies {
+  background-color: #202020;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+}
