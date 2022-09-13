@@ -1,9 +1,9 @@
 import './MoviesCardList.css';
 import { useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { defaultMoviesList } from '../../utils/defaultMoviesList';
+import durationFormatting from '../../utils/durationFormatting';
 
-function MoviesCardList({type}) {
+function MoviesCardList({type, cards}) {
   const [ maxCards, setMaxCards ] = useState(12)
 
   function showMoreCards () {
@@ -13,17 +13,16 @@ function MoviesCardList({type}) {
   return (
     <section className='moviescardlist'>
       <div className='moviescardlist__container page__container'>
-        {defaultMoviesList.length === 0 && <p className='moviescardlist__text'>По вашему запросу фильмов не найдено</p>}
-        {defaultMoviesList.map((movie, i) => {
+        {cards.length === 0 && <p className='moviescardlist__text'>По вашему запросу фильмов не найдено</p>}
+        {cards.map((movie, i) => {
           if (i < maxCards) {
-          return <MoviesCard title={movie.title} duration={movie.duration} poster={movie.poster} type={type} key={i}/> }
+          return <MoviesCard title={movie.nameRU} duration={durationFormatting(movie.duration)} poster={`https://api.nomoreparties.co${movie.image.url}`} type={type} key={movie.id}/> }
         })}
       </div>
-      { defaultMoviesList.length > maxCards
+      { cards.length > maxCards
       && <div className='moviescardlist__loadmore-wrapper page__container'>
           <button className='moviescardlist__loadmore-button' type='button' onClick={showMoreCards}>Ещё</button>
          </div>}
-
     </section>
   )
 }
