@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import durationFormatting from '../../utils/durationFormatting';
 
 function MoviesCardList({type, cards}) {
-  const [ maxCards, setMaxCards ] = useState(12)
+  const [ maxCards, setMaxCards ] = useState(12);
 
   function showMoreCards () {
     setMaxCards(maxCards + 12);

@@ -1,11 +1,12 @@
 import './Movies.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import Footer from '../Footer/Footer';
 import { getMovies } from '../../utils/MoviesApi';
+import showSearchResult from '../../utils/showSearchResult';
 
 
 function Movies() {
@@ -17,14 +18,24 @@ function Movies() {
   }
 
   function handleSubmitSearchForm() {
-      if (movieToFind !== '') {
-        getMovies()
-        .then((res) => {
-          setCards(res);
-          setMovieToFind('');
-        })
+    if (movieToFind !== '') {
+      getMovies()
+      .then((res) => {
+        setCards(showSearchResult(res, movieToFind));
+
+        localStorage.search = movieToFind;
+        localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
+        localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+      })
     }
   }
+
+  useEffect(() => {
+    if(localStorage.search && localStorage.found) {
+      setMovieToFind(localStorage.search)
+      setCards(JSON.parse(localStorage.found));
+    }
+  }, [])
 
   const [ isMoviesShown, setIsMoviesShown ] = useState(true);
   return (
