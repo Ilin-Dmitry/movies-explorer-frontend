@@ -88,6 +88,10 @@
   }
 }
 
+.moviescard__like_liked {
+  background-image: url('../../images/like-icon-active.svg');
+}
+
 .moviescard__delete {
   background: none;
   border: none;
