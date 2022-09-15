@@ -57,6 +57,7 @@ export function saveMovie(info) {
       movieId,
     })
   })
+  .then(res => res.json())
 }
 
 export function deleteMovie(id) {
