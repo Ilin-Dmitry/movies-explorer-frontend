@@ -26,13 +26,21 @@ function SavedMovies() {
     setListRefreshed(true);
   }
 
+  // useEffect(() => {
+  //   temporaryAuth()
+  //     .then(() => {
+  //       getSavedMovies()
+  //         .then((res) => {
+  //           setSavedCards(res)
+  //         })
+  //     })
+  //     setListRefreshed(false)
+  // }, [listRefreshed])
+
   useEffect(() => {
-    temporaryAuth()
-      .then(() => {
-        getSavedMovies()
-          .then((res) => {
-            setSavedCards(res)
-          })
+    getSavedMovies()
+      .then((res) => {
+        setSavedCards(res)
       })
       setListRefreshed(false)
   }, [listRefreshed])

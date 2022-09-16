@@ -1,7 +1,17 @@
+import { useHistory } from 'react-router-dom';
 import './Profile.css';
 import Header from '../Header/Header';
+import { signoutUser } from '../../utils/MainApi';
 
-function Profile() {
+function Profile({onLogout}) {
+  const history = useHistory();
+  function signout() {
+    signoutUser()
+      .then(() => {
+        onLogout();
+        history.push('./');
+      })
+  }
   return (
     <section className='profile'>
       <Header />
@@ -19,7 +29,7 @@ function Profile() {
             </div>
           </form>
           <button className='profile__btn profile__edit-btn' href='ya.ru' type='submit'>Редактировать</button>
-          <button className='profile__btn profile__signout-btn' href='ya.ru' type='button'>Выйти из аккаунта</button>
+          <button className='profile__btn profile__signout-btn' href='ya.ru' type='button' onClick={signout}>Выйти из аккаунта</button>
         </div>
       </main>
     </section>

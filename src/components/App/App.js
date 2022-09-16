@@ -1,6 +1,6 @@
 import './App.css';
-import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { IsLoggedContext } from '../../contexts/IsLoggedContext';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -10,41 +10,93 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import {checkCookieWithToken, checkToken} from '../../utils/MainApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const history = useHistory()
+  const [isLogged, setIsLogged] = useState('');
 
-  return (
-    <IsLoggedContext.Provider value={isLogged}>
+  function handleCheckToken() {
+    checkCookieWithToken()
+        .then((res) => {
+          return res.text();
+        })
+        .then(text => {
+          if(text === 'false') {
+            setIsLogged(false)
 
-      <div className='page'>
+            return false
+          }
+          if(text === 'true') {
+            return true
+          }
+        })
+        .then(res => {
+          if(res) {
+              checkToken()
+                .then((res) => {
+                  // setUserEmail(res.email);
+                  setIsLogged(true);
+                  // history.push('/movies');
+                  // IsLoggedContext.value = isLogged;
+                })
+                .catch(error => {
+                  console.log(`Ошибка ${error}`)
+                  setIsLogged(false)
+                })
+            }
+        })
+  }
 
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <Route exact path="/signup" >
-              <Register />
-            </Route>
-            <Route exact path="/signin">
-              <Login />
-            </Route>
-            <Route exact path="/movies">
-              <Movies />
-            </Route>
-            <Route exact path="/saved-movies">
-              <SavedMovies />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route path="*">
-              <PageNotFound />
-            </Route>
-          </Switch>
-      </div>
-    </IsLoggedContext.Provider>
-  )
-}
+  function handleSetIsLoggedIn() {
+    setIsLogged(true);
+  }
+
+  function handleSetIsLoggedOut() {
+    setIsLogged(false);
+  }
+
+  useEffect(() => {
+    handleCheckToken()
+  }, [])
+
+  if (isLogged !== '') {
+    return (
+      <IsLoggedContext.Provider value={isLogged}>
+
+        <div className='page'>
+
+            <Switch>
+              <Route exact path="/">
+                <Main />
+              </Route>
+              <Route exact path="/signup" >
+                <Register />
+              </Route>
+              <Route exact path="/signin">
+                <Login onLogin={handleSetIsLoggedIn}/>
+              </Route>
+              {/* <IsLoggedContext.Provider value={isLogged}> */}
+              <ProtectedRoute exact path="/movies">
+                  <Movies />
+              </ProtectedRoute>
+              {/* </IsLoggedContext.Provider> */}
+
+              <ProtectedRoute exact path="/saved-movies">
+                <SavedMovies />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/profile">
+                <Profile onLogout={handleSetIsLoggedOut}/>
+              </ProtectedRoute>
+              <Route path="*">
+                <PageNotFound />
+              </Route>
+            </Switch>
+        </div>
+      </IsLoggedContext.Provider>
+    )
+  }
+  }
 
 export default App;
