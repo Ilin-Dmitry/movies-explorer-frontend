@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-function SearchForm({onChange, movie, onSubmit}) {
+function SearchForm({onChange, movie, onSubmit, required, origin}) {
   const [ btnClicked, setBtnClicked ] = useState(false);
 
   function handleSearchForm(e) {
@@ -23,11 +23,11 @@ function SearchForm({onChange, movie, onSubmit}) {
     <form className='searchform' onSubmit={handleSubmit}>
       <div className='searchform__container page__container'>
         <div className='searchform__wrapper'>
-          <input className='searchform__input' placeholder="Фильм" value={movie} onChange={handleSearchForm} required></input>
+          <input className='searchform__input' placeholder="Фильм" value={movie} onChange={handleSearchForm} required={required}></input>
           <button className='searchform__button' type='submit' onClick={handleBtnClicked}></button>
         </div>
         {movie === '' && btnClicked && <p style={{'color': 'red'}}>Нужно ввести ключевое слово</p>}
-        <FilterCheckbox />
+        <FilterCheckbox onClick={onSubmit} origin={origin}/>
       </div>
     </form>
   )

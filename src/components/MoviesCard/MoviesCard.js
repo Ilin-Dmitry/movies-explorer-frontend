@@ -1,11 +1,7 @@
 import './MoviesCard.css';
 import { saveMovie, deleteMovie } from '../../utils/MainApi';
-import { useEffect } from 'react';
 
 function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike}) {
-  // let isLiked = false;
-  // console.log('info._id ===>', info._id);
-  // console.log('info ===>', info)
 
   function handleLikeCard(e) {
     const movieCard = e.target;
@@ -31,8 +27,15 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike}) 
 
   function handleDeleteCard() {
     deleteMovie(info._id)
-      .then(() => {
+      .then((res) => {
         onDislike()
+      })
+      .then(() => {
+        const oldSavedCards = JSON.parse(localStorage.foundSaved);
+        const newSavedCards = oldSavedCards.filter(item => {
+          return item._id !== info._id
+        })
+        localStorage.foundSaved = JSON.stringify(newSavedCards);
       })
 
   }

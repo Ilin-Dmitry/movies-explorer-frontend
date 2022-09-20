@@ -42,7 +42,7 @@ function Movies() {
     <div className="movies">
       <Header />
       <main>
-        <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} on/>
+        <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} required={true}/>
         { isMoviesShown ? <MoviesCardList cards={cards}/> : <Preloader />}
       </main>
       <Footer />

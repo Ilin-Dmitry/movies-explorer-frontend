@@ -10,6 +10,7 @@ function Profile({onLogout}) {
       .then(() => {
         onLogout();
         history.push('./');
+        localStorage.clear();
       })
   }
   return (
