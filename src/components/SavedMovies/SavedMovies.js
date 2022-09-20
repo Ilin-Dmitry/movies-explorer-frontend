@@ -23,12 +23,14 @@ function SavedMovies() {
   }
 
     function handleSubmitSearchForm() {
+      setIsMoviesShown(false)
       getSavedMovies()
         .then((res) => {
           setSavedCards(showSearchResult(res, movieToFind))
           localStorage.searchSaved = movieToFind;
           localStorage.foundSaved = JSON.stringify(showSearchResult(res, movieToFind));
           localStorage.shortFilmCheckSaved = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+          setIsMoviesShown(true)
         })
   }
 

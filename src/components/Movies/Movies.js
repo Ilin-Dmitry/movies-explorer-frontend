@@ -12,12 +12,15 @@ import showSearchResult from '../../utils/showSearchResult';
 function Movies() {
   const [ movieToFind, setMovieToFind ] = useState('');
   const [ cards, setCards ] = useState([]);
+  const [ isMoviesShown, setIsMoviesShown ] = useState(true);
+
 
   function handleSearchMovieInput(mov) {
     setMovieToFind(mov)
   }
 
   function handleSubmitSearchForm() {
+    setIsMoviesShown(false)
     if (movieToFind !== '') {
       getMovies()
       .then((res) => {
@@ -25,6 +28,7 @@ function Movies() {
         localStorage.search = movieToFind;
         localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
         localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+        setIsMoviesShown(true)
       })
     }
   }
@@ -40,7 +44,6 @@ function Movies() {
     }
   }, [])
 
-  const [ isMoviesShown, setIsMoviesShown ] = useState(true);
   return (
     <div className="movies">
       <Header />
