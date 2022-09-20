@@ -7,10 +7,13 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike}) 
     const movieCard = e.target;
     movieCard.classList.add('moviescard__like_liked');
     saveMovie(info)
-      .then(savedMovie => info._id = savedMovie._id)
+      .then(savedMovie => {info._id = savedMovie._id
+  })
+
   }
 
   function handleDislikeCard(e) {
+    onDislike();
     deleteMovie(info._id)
     const movieCard = e.target;
     movieCard.classList.remove('moviescard__like_liked');

@@ -21,13 +21,16 @@ function Movies() {
     if (movieToFind !== '') {
       getMovies()
       .then((res) => {
-        setCards(showSearchResult(res, movieToFind));
-
+        setCards(showSearchResult(res, movieToFind))
         localStorage.search = movieToFind;
         localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
         localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
       })
     }
+  }
+
+  function handleMoviesRefresh() {
+    setCards(showSearchResult(JSON.parse(localStorage.found), movieToFind))
   }
 
   useEffect(() => {
@@ -43,7 +46,7 @@ function Movies() {
       <Header />
       <main>
         <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} required={true}/>
-        { isMoviesShown ? <MoviesCardList cards={cards}/> : <Preloader />}
+        { isMoviesShown ? <MoviesCardList cards={cards} onRefresh={handleMoviesRefresh}/> : <Preloader />}
       </main>
       <Footer />
     </div>
