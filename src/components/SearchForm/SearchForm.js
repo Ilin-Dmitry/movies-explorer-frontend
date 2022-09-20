@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 function SearchForm({onChange, movie, onSubmit, required, origin}) {
   const [ btnClicked, setBtnClicked ] = useState(false);
@@ -26,7 +27,7 @@ function SearchForm({onChange, movie, onSubmit, required, origin}) {
           <input className='searchform__input' placeholder="Фильм" value={movie} onChange={handleSearchForm} required={required}></input>
           <button className='searchform__button' type='submit' onClick={handleBtnClicked}></button>
         </div>
-        {movie === '' && btnClicked && <p style={{'color': 'red'}}>Нужно ввести ключевое слово</p>}
+        {movie === '' && btnClicked && <ErrorMessage errorText={'Нужно ввести ключевое слово'}/>}
         <FilterCheckbox onClick={onSubmit} origin={origin}/>
       </div>
     </form>
