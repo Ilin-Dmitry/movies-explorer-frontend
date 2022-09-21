@@ -3,7 +3,7 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-function SearchForm({onChange, movie, onSubmit, required, origin}) {
+function SearchForm({onChange, movie, onSubmit, required, origin, error}) {
   const [ btnClicked, setBtnClicked ] = useState(false);
 
   function handleSearchForm(e) {
@@ -28,6 +28,7 @@ function SearchForm({onChange, movie, onSubmit, required, origin}) {
           <button className='searchform__button' type='submit' onClick={handleBtnClicked}></button>
         </div>
         {movie === '' && btnClicked && <ErrorMessage errorText={'Нужно ввести ключевое слово'}/>}
+        {error && <ErrorMessage errorText={error} />}
         <FilterCheckbox onClick={onSubmit} origin={origin}/>
       </div>
     </form>

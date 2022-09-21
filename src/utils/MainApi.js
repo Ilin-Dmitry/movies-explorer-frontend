@@ -87,6 +87,7 @@ export function signoutUser() {
 }
 
 export function getSavedMovies() {
+  console.log('getSavedMovie has started');
   return fetch(`${BASE_URL}/movies`, {
     credentials: 'include',
     headers: {

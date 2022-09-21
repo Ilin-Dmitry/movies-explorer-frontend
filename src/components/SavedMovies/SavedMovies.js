@@ -13,6 +13,7 @@ function SavedMovies() {
   const [ savedCards, setSavedCards ] = useState([]);
   const [ listRefreshed, setListRefreshed] = useState(false);
   const [ movieToFind, setMovieToFind ] = useState('');
+  const [ error, setError ] = useState('');
 
   function handleListRefresh() {
     setListRefreshed(true);
@@ -24,6 +25,7 @@ function SavedMovies() {
 
     function handleSubmitSearchForm() {
       setIsMoviesShown(false)
+      setError('')
       getSavedMovies()
         .then((res) => {
           setSavedCards(showSearchResult(res, movieToFind))
@@ -31,6 +33,9 @@ function SavedMovies() {
           localStorage.foundSaved = JSON.stringify(showSearchResult(res, movieToFind));
           localStorage.shortFilmCheckSaved = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
           setIsMoviesShown(true)
+        })
+        .catch(() => {
+          setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
   }
 
@@ -44,6 +49,9 @@ function SavedMovies() {
         else {
           setSavedCards(res)}
       })
+      .catch(() => {
+        setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+      })
       setListRefreshed(false)
   }, [listRefreshed])
 
@@ -51,8 +59,8 @@ function SavedMovies() {
     <div className='savedmovies'>
       <Header />
       <main>
-        <SearchForm onChange={handleSearchMovieInput} origin='saved' movie={movieToFind} onSubmit={handleSubmitSearchForm}/>
-        { isMoviesShown ? <MoviesCardList cards={savedCards} type='saved' onRefresh={handleListRefresh}/> : <Preloader />}
+        <SearchForm onChange={handleSearchMovieInput} origin='saved' movie={movieToFind} onSubmit={handleSubmitSearchForm} error={error}/>
+        { isMoviesShown ? <MoviesCardList cards={savedCards} type='saved' onRefresh={handleListRefresh}/> : !error && <Preloader />}
       </main>
       <Footer />
     </div>

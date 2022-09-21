@@ -13,6 +13,7 @@ function Movies() {
   const [ movieToFind, setMovieToFind ] = useState('');
   const [ cards, setCards ] = useState([]);
   const [ isMoviesShown, setIsMoviesShown ] = useState(true);
+  const [ error, setError ] = useState('');
 
 
   function handleSearchMovieInput(mov) {
@@ -21,6 +22,7 @@ function Movies() {
 
   function handleSubmitSearchForm() {
     setIsMoviesShown(false)
+    setError('')
     if (movieToFind !== '') {
       getMovies()
       .then((res) => {
@@ -30,6 +32,12 @@ function Movies() {
         localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
         setIsMoviesShown(true)
       })
+      .catch(() => {
+        setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+      })
+    }
+    else {
+      setError('Нужно ввести ключевое слово')
     }
   }
 
@@ -48,8 +56,9 @@ function Movies() {
     <div className="movies">
       <Header />
       <main>
-        <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} required={true}/>
-        { isMoviesShown ? <MoviesCardList cards={cards} onRefresh={handleMoviesRefresh}/> : <Preloader />}
+        {/* <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} required={true} error={error}/> */}
+        <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} error={error}/>
+        { isMoviesShown ? <MoviesCardList cards={cards} onRefresh={handleMoviesRefresh}/> : !error && <Preloader />}
       </main>
       <Footer />
     </div>
