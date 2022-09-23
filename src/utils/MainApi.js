@@ -77,6 +77,17 @@ export function signinUser({email, password}) {
   })
 }
 
+export function editUserProfile({name, email}) {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({name: name, email: email})
+  })
+}
+
 export function signoutUser() {
   return fetch(`${BASE_URL}/signout`, {
     credentials: 'include',

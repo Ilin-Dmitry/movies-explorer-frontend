@@ -67,7 +67,7 @@
   border-bottom: 1px solid #424242;
 }
 
-.profile__input-wrapper:last-of-type {
+.profile__input-wrapper_last {
   border: none;
   padding-bottom: 0;
 }
@@ -118,6 +118,29 @@
 
 .profile__edit-btn {
   color: #fff;
+  opacity: .5;
+  cursor: default;
+}
+
+.profile__edit-btn:hover {
+  opacity: .5;
+}
+
+.profile__edit-btn:active {
+  opacity: .5;
+}
+
+.profile__edit-btn_active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.profile__edit-btn_active:hover {
+  opacity: .7;
+}
+
+.profile__edit-btn_active:active {
+  opacity: .5;
 }
 
 @media screen and (max-width: 550px) {

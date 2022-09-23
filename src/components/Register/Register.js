@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Register.css';
 import { Link } from 'react-router-dom';
 import { signupUser } from '../../utils/MainApi';
@@ -11,6 +12,7 @@ function Register() {
   const [ nameValidity, setNameValidity ] = useState('');
   const [ emailValidity, setEmailValidity ] = useState('');
   const [ passwordValidity, setPasswordValidity ] = useState('');
+  const history = useHistory();
 
   // name.entered = false;
   function handleSetName(evt) {
@@ -59,7 +61,12 @@ function Register() {
   function handleRegisterFormSubmit(evt) {
     evt.preventDefault();
     if (nameValidity === 'valid' && emailValidity === 'valid' && passwordValidity === 'valid') {
-      signupUser({name: name, email: email, password: password})
+      signupUser({name: name.name, email: email.email, password: password.password})
+      .then((res) => {
+        if (res.ok) {
+          history.push('/signin')
+        }
+      })
     }
   }
 
