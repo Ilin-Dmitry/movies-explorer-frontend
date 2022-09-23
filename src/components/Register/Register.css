@@ -39,6 +39,24 @@
   }
 }
 
+.register__form-button {
+  opacity: .5;
+  cursor: default;
+}
+
+.register__form-button:hover {
+  opacity: .5;
+}
+
+.register__form-button_active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.register__form-button_active:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 550px) {
   .register__form-button {
     font-size: 12px;
