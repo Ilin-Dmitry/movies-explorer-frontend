@@ -1,16 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Profile.css';
 import Header from '../Header/Header';
 import { signoutUser, editUserProfile } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import userEvent from '@testing-library/user-event';
 
 function Profile({onLogout}) {
-  const history = useHistory();
-  const [ name, setName ] = useState({entered: false, name: ''});
-  const [ email, setEmail ] = useState({entered: false, email: ''});
+  const user = useContext(CurrentUserContext)
+
   const [ nameValidity, setNameValidity ] = useState('');
   const [ emailValidity, setEmailValidity ] = useState('');
+  const [ currentUser, setCurrentUser ] = useState(user);
+  const [ name, setName ] = useState({entered: false, name: currentUser.name});
+  const [ email, setEmail ] = useState({entered: false, email: currentUser.email});
+  const history = useHistory();
   function signout() {
     signoutUser()
       .then(() => {
@@ -65,11 +70,19 @@ function Profile({onLogout}) {
     evt.preventDefault();
     if (nameValidity === 'valid' && emailValidity === 'valid') {
       editUserProfile({name: name.name, email: email.email})
+        .then((res) => {
+          // console.log('res ===>', res);
+          // console.log('res ===>', res.json());
+          res.json()
+            .then((res) => {console.log('res res', res)
+              setCurrentUser({name: res.name, email: res.email})
+            })
+          })
     }
   }
 
   useEffect(() => {
-    // console.log('nameValidity', nameValidity);
+    console.log('currentUser', currentUser);
     checkEmailValidity()
     checkNameValidity()
     setEditBtnActive()
@@ -80,16 +93,16 @@ function Profile({onLogout}) {
       <Header />
       <main>
         <div className='profile__container page__container'>
-          <h3 className='profile__title'>Привет, Виталий!</h3>
+          <h3 className='profile__title'>Привет, {currentUser.name}!</h3>
           <form id='editForm' className='profile__form' onSubmit={handleEditFormSubmit}>
             <div className='profile__input-wrapper'>
               <label htmlFor="profile-name" className='profile__input-label'>Имя</label>
-              <input className='profile__form-input' id="profile-name" placeholder='Виталий' value={name.name} onChange={handleSetName} type='text'/>
+              <input className='profile__form-input' id="profile-name" placeholder={currentUser.name} value={name.name} onChange={handleSetName} type='text'/>
             </div>
             {nameValidity === 'not valid' && name.entered && <ErrorMessage errorText='Имя пользователя должно быть от 2 до 30 символов, содержать только латиницу, кириллицу, пробел или дефис.' />}
             <div className='profile__input-wrapper profile__input-wrapper_last'>
               <label htmlFor="profile-mail" className='profile__input-label'>E-mail</label>
-              <input className='profile__form-input' id="profile-mail" placeholder='pochta@yandex.ru' value={email.email} onChange={handleSetEmail} type='email' />
+              <input className='profile__form-input' id="profile-mail" placeholder={currentUser.email} value={email.email} onChange={handleSetEmail} type='email' />
             </div>
             {emailValidity === 'not valid' && email.entered && <ErrorMessage errorText='Введен неверный email.' />}
           </form>

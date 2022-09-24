@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { IsLoggedContext } from '../../contexts/IsLoggedContext';
 import Main from '../Main/Main';
@@ -12,10 +12,13 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import {checkCookieWithToken, checkToken} from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext'
 
 function App() {
   const history = useHistory()
+  const currentUser = useContext(CurrentUserContext);
   const [isLogged, setIsLogged] = useState('');
+  const [user, setUser] = useState({})
 
   function handleCheckToken() {
     checkCookieWithToken()
@@ -36,6 +39,8 @@ function App() {
           if(res) {
               checkToken()
                 .then((res) => {
+                  console.log('res from checkToken =>', res);
+                  setUser({name: res.name, email: res.email})
                   // setUserEmail(res.email);
                   setIsLogged(true);
                   // history.push('/movies');
@@ -65,35 +70,37 @@ function App() {
     return (
       <IsLoggedContext.Provider value={isLogged}>
 
-        <div className='page'>
+        <CurrentUserContext.Provider value={user}>
+          <div className='page'>
 
-            <Switch>
-              <Route exact path="/">
-                <Main />
-              </Route>
-              <Route exact path="/signup" >
-                <Register />
-              </Route>
-              <Route exact path="/signin">
-                <Login onLogin={handleSetIsLoggedIn}/>
-              </Route>
-              {/* <IsLoggedContext.Provider value={isLogged}> */}
-              <ProtectedRoute exact path="/movies">
-                  <Movies />
-              </ProtectedRoute>
-              {/* </IsLoggedContext.Provider> */}
+              <Switch>
+                <Route exact path="/">
+                  <Main />
+                </Route>
+                <Route exact path="/signup" >
+                  <Register />
+                </Route>
+                <Route exact path="/signin">
+                  <Login onLogin={handleSetIsLoggedIn}/>
+                </Route>
+                {/* <IsLoggedContext.Provider value={isLogged}> */}
+                <ProtectedRoute exact path="/movies">
+                    <Movies />
+                </ProtectedRoute>
+                {/* </IsLoggedContext.Provider> */}
 
-              <ProtectedRoute exact path="/saved-movies">
-                <SavedMovies />
-              </ProtectedRoute>
-              <ProtectedRoute exact path="/profile">
-                <Profile onLogout={handleSetIsLoggedOut}/>
-              </ProtectedRoute>
-              <Route path="*">
-                <PageNotFound />
-              </Route>
-            </Switch>
-        </div>
+                <ProtectedRoute exact path="/saved-movies">
+                  <SavedMovies />
+                </ProtectedRoute>
+                <ProtectedRoute exact path="/profile">
+                  <Profile onLogout={handleSetIsLoggedOut}/>
+                </ProtectedRoute>
+                <Route path="*">
+                  <PageNotFound />
+                </Route>
+              </Switch>
+          </div>
+        </CurrentUserContext.Provider>
       </IsLoggedContext.Provider>
     )
   }
