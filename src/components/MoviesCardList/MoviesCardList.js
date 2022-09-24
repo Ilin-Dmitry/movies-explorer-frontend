@@ -7,13 +7,31 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 function MoviesCardList({type, cards, onRefresh}) {
   const [ maxCards, setMaxCards ] = useState(12);
+  const [ addCards, setAddCards ] = useState(3)
   const [ savedMoviesList, setSavedMoviesList ] = useState([])
   const [error, setError] = useState('');
+
+  function setCardsNumber() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 900) {
+      setMaxCards(12)
+      setAddCards(3)
+    } else if (screenWidth >= 551) {
+      setMaxCards(8)
+      setAddCards(2)
+    } else {
+      setMaxCards(5)
+      setAddCards(2)
+    }
+  }
+
   function showMoreCards () {
-    setMaxCards(maxCards + 12);
+    setMaxCards(maxCards + addCards);
   }
 
   useEffect(() => {
+    // console.log('ширина экрана', window.innerWidth);
+    setCardsNumber();
     setError('')
     getSavedMovies()
       .then((movieList) => {
