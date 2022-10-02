@@ -8,13 +8,11 @@ import Footer from '../Footer/Footer';
 import { getMovies } from '../../utils/MoviesApi';
 import showSearchResult from '../../utils/showSearchResult';
 
-
 function Movies() {
   const [ movieToFind, setMovieToFind ] = useState('');
   const [ cards, setCards ] = useState([]);
   const [ isMoviesShown, setIsMoviesShown ] = useState(true);
   const [ error, setError ] = useState('');
-
 
   function handleSearchMovieInput(mov) {
     setMovieToFind(mov)
@@ -56,7 +54,6 @@ function Movies() {
     <div className="movies">
       <Header />
       <main>
-        {/* <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} required={true} error={error}/> */}
         <SearchForm onChange={handleSearchMovieInput} movie={movieToFind} onSubmit={handleSubmitSearchForm} error={error}/>
         { isMoviesShown ? <MoviesCardList cards={cards} onRefresh={handleMoviesRefresh}/> : !error && <Preloader />}
       </main>

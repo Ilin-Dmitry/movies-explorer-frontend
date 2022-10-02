@@ -5,7 +5,6 @@ import Header from '../Header/Header';
 import { signoutUser, editUserProfile } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-import userEvent from '@testing-library/user-event';
 
 function Profile({onLogout}) {
   const user = useContext(CurrentUserContext)
@@ -17,6 +16,7 @@ function Profile({onLogout}) {
   const [ email, setEmail ] = useState({entered: false, email: currentUser.email});
   const [ error, setError ] = useState('');
   const history = useHistory();
+
   function signout() {
     signoutUser()
       .then(() => {
@@ -34,29 +34,22 @@ function Profile({onLogout}) {
   }
 
   function handleSetName(evt) {
-    // name.entered = true;
     setName({name: evt.target.value, entered: true})
   }
 
   function checkNameValidity() {
-    // if (2 <= name.length && 30>= name.length) {
     if (name.name.match(/^[a-zа-яё -]{2,30}$/i)) {
       setNameValidity('valid')
-      // console.log('name valid');
     } else {
       setNameValidity('not valid')
-      // console.log('name NOT valid');
     }
   }
 
   function checkEmailValidity() {
-    // handleSetEmail(evt)
     if (email.email.match(/^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,4}$/i)) {
       setEmailValidity('valid')
-      // console.log('email match');
     } else {
       setEmailValidity('not valid')
-      // console.log('email not match');
     }
   }
 
@@ -70,18 +63,14 @@ function Profile({onLogout}) {
   }
 
   function handleEditFormSubmit(evt) {
-    console.log('handleEditFormSubmit');
     evt.preventDefault();
     if (nameValidity === 'valid' && emailValidity === 'valid') {
       editUserProfile({name: name.name, email: email.email})
         .then((res) => {
-
-          console.log('res ===>', res);
           if (res.status === 409) {
             setError('Пользователь с такой почтой уже зарегистрирован')
             throw new Error('Пользователь с такой почтой уже зарегестрирован')
           }
-          // console.log('res ===>', res.json());
           res.json()
             .then((res) => {console.log('res res', res)
               setCurrentUser({name: res.name, email: res.email})
@@ -94,7 +83,6 @@ function Profile({onLogout}) {
   }
 
   useEffect(() => {
-    console.log('currentUser', currentUser);
     checkEmailValidity()
     checkNameValidity()
     setEditBtnActive()

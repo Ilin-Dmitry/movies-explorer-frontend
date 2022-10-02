@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import {signinUser} from '../../utils/MainApi';
-import { IsLoggedContext } from '../../contexts/IsLoggedContext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 function Login({onLogin}) {
@@ -18,13 +17,10 @@ function Login({onLogin}) {
   }
 
   function checkEmailValidity() {
-    // handleSetEmail(evt)
     if (email.email.match(/^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,4}$/i)) {
       setEmailValidity('valid')
-      // console.log('email match');
     } else {
       setEmailValidity('not valid')
-      // console.log('email not match');
     }
   }
 
@@ -49,25 +45,12 @@ function Login({onLogin}) {
             onLogin()
             history.push('./movies');
           } else {
-            // Promise.reject('вай-вай-вай')
-            // throw new Error('вай-вай-вай')
             setError('Неверные email или пароль');
-            
           }
           })
           .catch((err) => {
             console.log('Ошибка ', err);
           })
-        // .then(() => {
-        //   onLogin()
-        //   .then((res) => {
-        //     console.log('res ===>', res);
-        //     if (res.ok) {
-        //       history.push('./movies')
-        //     }
-        //   })
-        // })
-
     }
   }
 
@@ -81,7 +64,6 @@ function Login({onLogin}) {
   }
 
   useEffect(() => {
-    // console.log('nameValidity', nameValidity);
     checkEmailValidity()
     checkPasswordValidity()
     setLoginBtnActive()
