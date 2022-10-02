@@ -72,7 +72,7 @@ function Profile({onLogout}) {
             throw new Error('Пользователь с такой почтой уже зарегестрирован')
           }
           res.json()
-            .then((res) => {console.log('res res', res)
+            .then((res) => {
               setCurrentUser({name: res.name, email: res.email})
             })
           })

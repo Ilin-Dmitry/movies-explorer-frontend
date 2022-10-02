@@ -1,17 +1,5 @@
 const BASE_URL = 'http://localhost:3001';
 
-// export function temporaryAuth() {
-//   return fetch(`${BASE_URL}/signin`, {
-//     method: 'POST',
-//     credentials: 'include',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ email: 'user@mail.ru', password: '123' })
-//   })
-// }
-
-
 export function checkCookieWithToken() {
   return fetch(`${BASE_URL}/checkcookie`, {
     method: 'GET',
@@ -75,16 +63,6 @@ export function signinUser({email, password}) {
     },
     body: JSON.stringify({ email: email, password: password })
   })
-    // .then(res => {
-    //   console.log('res =>> ', res);
-    //   if (!res.ok) {
-    //     throw new Error()
-    //   } else {
-    //     // Promise.reject('errerererere')
-    //     // Promise.reject('errerererere')
-    //     return res
-    //   }
-    // })
     .catch(err => {
       console.log('Произошла ошибка ', err)
     })
@@ -111,7 +89,6 @@ export function signoutUser() {
 }
 
 export function getSavedMovies() {
-  console.log('getSavedMovie has started');
   return fetch(`${BASE_URL}/movies`, {
     credentials: 'include',
     headers: {

@@ -10,10 +10,8 @@ function BurgerMenu() {
   }
   return (
     <div className='burger'>
-      {/* <div className='burger__icon'></div> */}
       <div onClick={changeUnderlayerClass}><BurgerIcon /></div>
       <nav className='burger__underlayer'>
-        {/* <BurgerIcon /> */}
         <div className='burger__links'>
           <NavLink className='burger__link' activeClassName='burger__link_active' exact to='/'><span>Главная</span></NavLink>
           <NavLink className='burger__link' activeClassName='burger__link_active' to='./movies'><span>Фильмы</span></NavLink>

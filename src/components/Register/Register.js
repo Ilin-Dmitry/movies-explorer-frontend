@@ -15,20 +15,15 @@ function Register() {
   const [ error, setError ] = useState('');
   const history = useHistory();
 
-  // name.entered = false;
   function handleSetName(evt) {
-    // name.entered = true;
     setName({name: evt.target.value, entered: true})
   }
 
   function checkNameValidity() {
-    // if (2 <= name.length && 30>= name.length) {
     if (name.name.match(/^[a-zа-яё -]{2,30}$/i)) {
       setNameValidity('valid')
-      // console.log('name valid');
     } else {
       setNameValidity('not valid')
-      // console.log('name NOT valid');
     }
   }
 
@@ -37,13 +32,10 @@ function Register() {
   }
 
   function checkEmailValidity() {
-    // handleSetEmail(evt)
     if (email.email.match(/^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,4}$/i)) {
       setEmailValidity('valid')
-      // console.log('email match');
     } else {
       setEmailValidity('not valid')
-      // console.log('email not match');
     }
   }
 
@@ -64,7 +56,6 @@ function Register() {
     if (nameValidity === 'valid' && emailValidity === 'valid' && passwordValidity === 'valid') {
       signupUser({name: name.name, email: email.email, password: password.password})
       .then((res) => {
-        console.log('res =>', res)
         if (res.status === 409) {
           setError('Пользователь с такой почтой уже зарегистрирован')
           throw new Error('Пользователь с такой почтой уже зарегестрирован')
@@ -91,7 +82,6 @@ function Register() {
   }
 
   useEffect(() => {
-    // console.log('nameValidity', nameValidity);
     checkEmailValidity()
     checkNameValidity()
     checkPasswordValidity()
@@ -118,7 +108,6 @@ function Register() {
           <input className='register__input page__auth-input' value={password.password} onChange={handleSetPassword} id='register-password' placeholder='password' type='password' required/>
         </div>
         {passwordValidity === 'not valid' && password.entered && <ErrorMessage errorText='Пароль должен содержать от 3 до 30 символов' />}
-        {/* <p className='register__form-error page__auth-error'>Что-то пошло не так</p> */}
         { error && <ErrorMessage errorText={error} />}
         <button className='register__form-button page__auth-button'>Зарегистрироваться</button>
         <p className='register__btn-subtext page__btn-subtext'>Уже зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signin'>Войти</Link></p>

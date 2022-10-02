@@ -39,7 +39,6 @@ function App() {
                   setIsLogged(true);
                 })
                 .catch(error => {
-                  console.log(`Ошибка ${error}`)
                   setIsLogged(false)
                 })
             }
