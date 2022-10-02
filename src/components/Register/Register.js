@@ -12,6 +12,7 @@ function Register() {
   const [ nameValidity, setNameValidity ] = useState('');
   const [ emailValidity, setEmailValidity ] = useState('');
   const [ passwordValidity, setPasswordValidity ] = useState('');
+  const [ error, setError ] = useState('');
   const history = useHistory();
 
   // name.entered = false;
@@ -63,9 +64,19 @@ function Register() {
     if (nameValidity === 'valid' && emailValidity === 'valid' && passwordValidity === 'valid') {
       signupUser({name: name.name, email: email.email, password: password.password})
       .then((res) => {
-        if (res.ok) {
+        console.log('res =>', res)
+        if (res.status === 409) {
+          setError('Пользователь с такой почтой уже зарегистрирован')
+          throw new Error('Пользователь с такой почтой уже зарегестрирован')
+        } else if (res.ok) {
           history.push('/signin')
+        } else {
+          setError('Что-то пошло не так, попробуйте еще раз')
+          throw new Error('Что-то пошло не так, попробуйте еще раз')
         }
+      })
+      .catch(err => {
+        console.log('err => ', err);
       })
     }
   }
@@ -108,6 +119,7 @@ function Register() {
         </div>
         {passwordValidity === 'not valid' && password.entered && <ErrorMessage errorText='Пароль должен содержать от 3 до 30 символов' />}
         {/* <p className='register__form-error page__auth-error'>Что-то пошло не так</p> */}
+        { error && <ErrorMessage errorText={error} />}
         <button className='register__form-button page__auth-button'>Зарегистрироваться</button>
         <p className='register__btn-subtext page__btn-subtext'>Уже зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signin'>Войти</Link></p>
       </form>

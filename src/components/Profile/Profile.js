@@ -15,6 +15,7 @@ function Profile({onLogout}) {
   const [ currentUser, setCurrentUser ] = useState(user);
   const [ name, setName ] = useState({entered: false, name: currentUser.name});
   const [ email, setEmail ] = useState({entered: false, email: currentUser.email});
+  const [ error, setError ] = useState('');
   const history = useHistory();
   function signout() {
     signoutUser()
@@ -22,6 +23,9 @@ function Profile({onLogout}) {
         onLogout();
         history.push('./');
         localStorage.clear();
+      })
+      .catch((err) => {
+        console.log('Ошибка ', err);
       })
   }
 
@@ -71,13 +75,21 @@ function Profile({onLogout}) {
     if (nameValidity === 'valid' && emailValidity === 'valid') {
       editUserProfile({name: name.name, email: email.email})
         .then((res) => {
-          // console.log('res ===>', res);
+
+          console.log('res ===>', res);
+          if (res.status === 409) {
+            setError('Пользователь с такой почтой уже зарегистрирован')
+            throw new Error('Пользователь с такой почтой уже зарегестрирован')
+          }
           // console.log('res ===>', res.json());
           res.json()
             .then((res) => {console.log('res res', res)
               setCurrentUser({name: res.name, email: res.email})
             })
           })
+        .catch(err => {
+          console.log('err =>', err)
+        })
     }
   }
 
@@ -105,6 +117,7 @@ function Profile({onLogout}) {
               <input className='profile__form-input' id="profile-mail" placeholder={currentUser.email} value={email.email} onChange={handleSetEmail} type='email' />
             </div>
             {emailValidity === 'not valid' && email.entered && <ErrorMessage errorText='Введен неверный email.' />}
+            { error && <ErrorMessage errorText={error} />}
           </form>
           <button form='editForm' className='profile__btn profile__edit-btn' href='ya.ru' type='submit' onClick={handleEditFormSubmit}>Редактировать</button>
           <button className='profile__btn profile__signout-btn' href='ya.ru' type='button' onClick={signout}>Выйти из аккаунта</button>

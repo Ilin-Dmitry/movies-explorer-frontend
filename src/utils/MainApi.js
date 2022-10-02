@@ -75,6 +75,19 @@ export function signinUser({email, password}) {
     },
     body: JSON.stringify({ email: email, password: password })
   })
+    // .then(res => {
+    //   console.log('res =>> ', res);
+    //   if (!res.ok) {
+    //     throw new Error()
+    //   } else {
+    //     // Promise.reject('errerererere')
+    //     // Promise.reject('errerererere')
+    //     return res
+    //   }
+    // })
+    .catch(err => {
+      console.log('Произошла ошибка ', err)
+    })
 }
 
 export function editUserProfile({name, email}) {

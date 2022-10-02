@@ -10,6 +10,7 @@ function Login({onLogin}) {
   const [ password, setPassword ] = useState({entered: false, password: ''});
   const [ emailValidity, setEmailValidity ] = useState('');
   const [ passwordValidity, setPasswordValidity ] = useState('');
+  const [ error, setError ] = useState('');
   const history = useHistory();
 
   function handleSetEmail(evt) {
@@ -47,7 +48,15 @@ function Login({onLogin}) {
           if (res.ok) {
             onLogin()
             history.push('./movies');
+          } else {
+            // Promise.reject('вай-вай-вай')
+            // throw new Error('вай-вай-вай')
+            setError('Неверные email или пароль');
+            
           }
+          })
+          .catch((err) => {
+            console.log('Ошибка ', err);
           })
         // .then(() => {
         //   onLogin()
@@ -93,6 +102,7 @@ function Login({onLogin}) {
           <input className='login__input page__auth-input' id='login-password' placeholder='' type='password' value={password.password} onChange={handleSetPassword}/>
         </div>
         {passwordValidity === 'not valid' && password.entered && <ErrorMessage errorText='Пароль должен содержать от 3 до 30 символов' />}
+        {error && <ErrorMessage errorText={error} />}
         <button className='login__form-button page__auth-button' type='submit'>Войти</button>
         <p className='register__btn-subtext page__btn-subtext'>Ещё не зарегистрированы? <Link className='register__btn-sublink page__btn-sublink' to='/signup'>Регистрация</Link></p>
       </form>
