@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.mesto.dmilin.nomoredomains.sbs/';
+const BASE_URL = 'https://api.mesto.dmilin.nomoredomains.sbs';
 
 export function checkCookieWithToken() {
   return fetch(`${BASE_URL}/checkcookie`, {
