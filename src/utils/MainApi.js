@@ -3,7 +3,10 @@ const BASE_URL = 'https://api.mesto.dmilin.nomoredomains.sbs/';
 export function checkCookieWithToken() {
   return fetch(`${BASE_URL}/checkcookie`, {
     method: 'GET',
-    credentials: 'include'
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
   })
   .then((res) => {
     if (res.ok) {
