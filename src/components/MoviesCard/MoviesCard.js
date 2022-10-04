@@ -3,8 +3,7 @@ import './MoviesCard.css';
 import { saveMovie, deleteMovie } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike}) {
-
+function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, link}) {
   const [error, setError] = useState('');
   function handleLikeCard(e) {
     setError('');
@@ -56,12 +55,11 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike}) 
   }
   return (
     <div className='moviescard'>
-      <img  className='moviescard__cover' src={poster} alt="photod" />
+      <a href={link} target='_blank' rel='noreferrer' ><img  className='moviescard__cover' src={poster} alt="photod" /></a>
       <div className='moviescard__info'>
         <p className='moviescard__caption'>{title}</p>
         {type === 'saved' ? <button className='moviescard__delete' type='button' onClick={handleDeleteCard}></button> : <button className={`moviescard__like ${isLiked ? 'moviescard__like_liked' : ''}`} type='button' onClick={handleToggleLikeCard}></button> }
         {!(error) ? <p className='moviescard__length'>{duration}</p> : <ErrorMessage errorText={error} />}
-
       </div>
     </div>
   )

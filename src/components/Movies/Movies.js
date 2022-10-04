@@ -26,7 +26,6 @@ function Movies() {
         setCards(showSearchResult(JSON.parse(localStorage.movieBase), movieToFind))
         localStorage.search = movieToFind;
         localStorage.found = JSON.stringify(showSearchResult(JSON.parse(localStorage.movieBase), movieToFind, movieToFind));
-        console.log('localStorage.found =>', JSON.parse(localStorage.found));
         localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
         setIsMoviesShown(true)
       } else {
@@ -36,7 +35,6 @@ function Movies() {
           setCards(showSearchResult(res, movieToFind))
           localStorage.search = movieToFind;
           localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
-          console.log('localStorage.found =>', JSON.parse(localStorage.found));
           localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
           setIsMoviesShown(true)
         })

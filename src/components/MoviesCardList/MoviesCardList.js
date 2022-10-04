@@ -64,7 +64,7 @@ function MoviesCardList({type, cards, onRefresh}) {
             isLiked = true;
           }
           if (i < maxCards) {
-          return <MoviesCard title={movie.nameRU} duration={durationFormatting(movie.duration)} poster={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image} type={type} key={movie.id ? movie.id : movie._id} info={movie} isLiked={isLiked} onDislike={onRefresh}/> }
+          return <MoviesCard title={movie.nameRU} duration={durationFormatting(movie.duration)} poster={movie.image.url ? `https://api.nomoreparties.co${movie.image.url}` : movie.image} type={type} key={movie.id ? movie.id : movie._id} info={movie} isLiked={isLiked} onDislike={onRefresh} link={movie.trailerLink}/> }
         })}
       </div>
       }
