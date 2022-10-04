@@ -11,6 +11,7 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import {checkCookieWithToken, checkToken} from '../../utils/MainApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import LoggedRoute from '../LoggedRoute/LoggedRoute';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext'
 
 function App() {
@@ -67,12 +68,12 @@ function App() {
                 <Route exact path="/">
                   <Main />
                 </Route>
-                <Route exact path="/signup" >
+                <LoggedRoute exact path="/signup" >
                   <Register onSignup={handleSetIsLoggedIn}/>
-                </Route>
-                <Route exact path="/signin">
+                </LoggedRoute>
+                <LoggedRoute exact path="/signin">
                   <Login onLogin={handleSetIsLoggedIn}/>
-                </Route>
+                </LoggedRoute>
                 <ProtectedRoute exact path="/movies">
                     <Movies />
                 </ProtectedRoute>
