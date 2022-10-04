@@ -29,9 +29,13 @@ function SavedMovies() {
       getSavedMovies()
         .then((res) => {
           setSavedCards(showSearchResult(res, movieToFind))
-          localStorage.searchSaved = movieToFind;
-          localStorage.foundSaved = JSON.stringify(showSearchResult(res, movieToFind));
-          localStorage.shortFilmCheckSaved = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+            // -------------------------------------------------- //
+            // Раскомментировать для сохранения данных последнего поиска на странице «Сохранённые фильмы»
+            // -------------------------------------------------- //
+            // localStorage.searchSaved = movieToFind;
+            // localStorage.foundSaved = JSON.stringify(showSearchResult(res, movieToFind));
+            // localStorage.shortFilmCheckSaved = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+            localStorage.shortFilmCheckSaved = JSON.stringify(false);
           setIsMoviesShown(true)
         })
         .catch(() => {
@@ -39,15 +43,29 @@ function SavedMovies() {
         })
   }
 
+  // -------------------------------------------------- //
+  // Раскомментировать для сохранения данных последнего поиска на странице «Сохранённые фильмы»
+  // -------------------------------------------------- //
+  // useEffect(() => {
+  //   getSavedMovies()
+  //     .then((res) => {
+  //       if(localStorage.foundSaved) {
+  //         setMovieToFind(localStorage.searchSaved)
+  //         setSavedCards(showSearchResult(res, localStorage.searchSaved));
+  //       }
+  //       else {
+  //         setSavedCards(res)}
+  //     })
+  //     .catch(() => {
+  //       setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+  //     })
+  //     setListRefreshed(false)
+  // }, [listRefreshed])
+
   useEffect(() => {
     getSavedMovies()
       .then((res) => {
-        if(localStorage.foundSaved) {
-          setMovieToFind(localStorage.searchSaved)
-          setSavedCards(showSearchResult(res, localStorage.searchSaved));
-        }
-        else {
-          setSavedCards(res)}
+        setSavedCards(res)
       })
       .catch(() => {
         setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
