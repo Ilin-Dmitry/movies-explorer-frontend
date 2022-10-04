@@ -3,6 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { IsLoggedContext } from '../../contexts/IsLoggedContext';
 import './Navigation.css';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import {
+  BREAKPOINT_TABLET
+} from '../../utils/config'
 
 function Navigation() {
   const isLogged = useContext(IsLoggedContext);
@@ -16,7 +19,7 @@ function Navigation() {
   }
 
   useEffect(() => {
-    if (window.innerWidth < 900) {
+    if (window.innerWidth < BREAKPOINT_TABLET) {
       setIsMobile(true);
     }
     window.addEventListener('resize', checkIsMobile)

@@ -4,6 +4,16 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import durationFormatting from '../../utils/durationFormatting';
 import { getSavedMovies } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import {
+  CARDS_TO_ADD_DESKTOP,
+  CARDS_TO_ADD_TABLET,
+  CARDS_TO_ADD_MOBILE,
+  CARDS_TO_SHOW_DESKTOP,
+  CARDS_TO_SHOW_TABLET,
+  CARDS_TO_SHOW_MOBILE,
+  BREAKPOINT_TABLET,
+  BREAKPOINT_MOBILE,
+} from '../../utils/config';
 
 function MoviesCardList({type, cards, onRefresh}) {
   const [ maxCards, setMaxCards ] = useState(12);
@@ -13,15 +23,15 @@ function MoviesCardList({type, cards, onRefresh}) {
 
   function setCardsNumber() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 900) {
-      setMaxCards(12)
-      setAddCards(3)
-    } else if (screenWidth >= 551) {
-      setMaxCards(8)
-      setAddCards(2)
+    if (screenWidth >= BREAKPOINT_TABLET) {
+      setMaxCards(CARDS_TO_SHOW_DESKTOP)
+      setAddCards(CARDS_TO_ADD_DESKTOP)
+    } else if (screenWidth >= BREAKPOINT_MOBILE) {
+      setMaxCards(CARDS_TO_SHOW_TABLET)
+      setAddCards(CARDS_TO_ADD_TABLET)
     } else {
-      setMaxCards(5)
-      setAddCards(2)
+      setMaxCards(CARDS_TO_SHOW_MOBILE)
+      setAddCards(CARDS_TO_ADD_MOBILE)
     }
   }
 
