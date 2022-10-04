@@ -137,7 +137,13 @@ export function saveMovie(info) {
       movieId,
     })
   })
-  .then(res => res.json())
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error('Произошла ошибка')
+    }
+  })
 }
 
 export function deleteMovie(id) {
