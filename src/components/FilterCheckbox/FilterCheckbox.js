@@ -1,11 +1,7 @@
 import './FilterCheckbox.css';
 
 function FilterCheckbox({onClick, origin}) {
-  // -------------------------------------------------- //
-  // Раскомментировать для сохранения данных последнего поиска на странице «Сохранённые фильмы»
-  // -------------------------------------------------- //
   const checkInStorage = origin === 'saved' ? localStorage.shortFilmCheckSaved : localStorage.shortFilmCheck;
-  // const checkInStorage = localStorage.shortFilmCheck;
   function handleClick() {
     onClick()
   }

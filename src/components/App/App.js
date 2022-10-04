@@ -68,7 +68,7 @@ function App() {
                   <Main />
                 </Route>
                 <Route exact path="/signup" >
-                  <Register />
+                  <Register onSignup={handleSetIsLoggedIn}/>
                 </Route>
                 <Route exact path="/signin">
                   <Login onLogin={handleSetIsLoggedIn}/>

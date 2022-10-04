@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Register.css';
 import { Link } from 'react-router-dom';
-import { signupUser } from '../../utils/MainApi';
+import { signupUser, signinUser } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-function Register() {
+function Register({onSignup}) {
   const [ name, setName ] = useState({entered: false, name: ''});
   const [ email, setEmail ] = useState({entered: false, email: ''});
   const [ password, setPassword ] = useState({entered: false, password: ''});
@@ -60,7 +60,14 @@ function Register() {
           setError('Пользователь с такой почтой уже зарегистрирован')
           throw new Error('Пользователь с такой почтой уже зарегестрирован')
         } else if (res.ok) {
-          history.push('/signin')
+          signinUser({ email: email.email, password: password.password })
+            .then(() => {
+              onSignup()
+              history.push('/movies')
+            })
+            .catch((err) => {
+              console.log('Ошибка ', err);
+            })
         } else {
           setError('Что-то пошло не так, попробуйте еще раз')
           throw new Error('Что-то пошло не так, попробуйте еще раз')
