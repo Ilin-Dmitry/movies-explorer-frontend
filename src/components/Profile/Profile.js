@@ -4,6 +4,7 @@ import './Profile.css';
 import Header from '../Header/Header';
 import { signoutUser, editUserProfile } from '../../utils/MainApi';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import SuccessMessage from '../SuccessMessage/SuccessMessage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
 function Profile({onLogout}) {
@@ -15,6 +16,7 @@ function Profile({onLogout}) {
   const [ name, setName ] = useState({entered: false, name: currentUser.name});
   const [ email, setEmail ] = useState({entered: false, email: currentUser.email});
   const [ error, setError ] = useState('');
+  const [ success, setSuccess ] = useState(false);
   const history = useHistory();
 
   function signout() {
@@ -64,6 +66,8 @@ function Profile({onLogout}) {
 
   function handleEditFormSubmit(evt) {
     evt.preventDefault();
+    setSuccess(false);
+    setError('');
     if (nameValidity === 'valid' && emailValidity === 'valid') {
       editUserProfile({name: name.name, email: email.email})
         .then((res) => {
@@ -74,6 +78,7 @@ function Profile({onLogout}) {
           res.json()
             .then((res) => {
               setCurrentUser({name: res.name, email: res.email})
+              setSuccess(true);
             })
           })
         .catch(err => {
@@ -106,6 +111,7 @@ function Profile({onLogout}) {
             </div>
             {emailValidity === 'not valid' && email.entered && <ErrorMessage errorText='Введен неверный email.' />}
             { error && <ErrorMessage errorText={error} />}
+            { success && <SuccessMessage successText='Данные пользователя успешно обновлены'/>}
           </form>
           <button form='editForm' className='profile__btn profile__edit-btn' href='ya.ru' type='submit' onClick={handleEditFormSubmit}>Редактировать</button>
           <button className='profile__btn profile__signout-btn' href='ya.ru' type='button' onClick={signout}>Выйти из аккаунта</button>
