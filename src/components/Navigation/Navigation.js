@@ -7,18 +7,22 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 function Navigation() {
   const isLogged = useContext(IsLoggedContext);
   const [isMobile, setIsMobile] = useState(false);
+  function checkIsMobile() {
+    if (window.innerWidth < 900) {
+      setIsMobile(true)
+    } else {
+      setIsMobile(false)
+    }
+  }
 
   useEffect(() => {
     if (window.innerWidth < 900) {
       setIsMobile(true);
     }
-    window.addEventListener('resize', () => {
-      if (window.innerWidth < 900) {
-        setIsMobile(true)
-      } else {
-        setIsMobile(false)
-      }
-    })
+    window.addEventListener('resize', checkIsMobile)
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
   }, [isMobile])
 
   return (
