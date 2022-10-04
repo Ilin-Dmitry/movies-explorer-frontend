@@ -30,8 +30,8 @@ function MoviesCardList({type, cards, onRefresh}) {
   }
 
   useEffect(() => {
-    // console.log('ширина экрана', window.innerWidth);
     setCardsNumber();
+    window.addEventListener('resize', setCardsNumber)
     setError('')
     getSavedMovies()
       .then((movieList) => {
@@ -40,6 +40,9 @@ function MoviesCardList({type, cards, onRefresh}) {
       .catch((err) => {
         setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
       })
+    return () => {
+      window.removeEventListener('resize', setCardsNumber);
+    };
   }, [cards])
 
   return (
