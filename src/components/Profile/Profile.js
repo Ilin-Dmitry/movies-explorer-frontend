@@ -57,7 +57,7 @@ function Profile({onLogout}) {
 
   function setEditBtnActive() {
     const editBtn = document.querySelector('.profile__edit-btn')
-    if (nameValidity === 'valid' && emailValidity === 'valid') {
+    if ((nameValidity === 'valid' && emailValidity === 'valid') && (name.name !== currentUser.name || email.email !== currentUser.email)) {
       editBtn.classList.add('profile__edit-btn_active')
     } else {
       editBtn.classList.remove('profile__edit-btn_active')
@@ -66,25 +66,29 @@ function Profile({onLogout}) {
 
   function handleEditFormSubmit(evt) {
     evt.preventDefault();
-    setSuccess(false);
-    setError('');
-    if (nameValidity === 'valid' && emailValidity === 'valid') {
-      editUserProfile({name: name.name, email: email.email})
-        .then((res) => {
-          if (res.status === 409) {
-            setError('Пользователь с такой почтой уже зарегистрирован')
-            throw new Error('Пользователь с такой почтой уже зарегестрирован')
-          }
-          res.json()
-            .then((res) => {
-              setCurrentUser({name: res.name, email: res.email})
-              setSuccess(true);
+    if  (name.name !== currentUser.name || email.email !== currentUser.email)
+    {
+      setSuccess(false);
+      setError('');
+      if (nameValidity === 'valid' && emailValidity === 'valid') {
+        editUserProfile({name: name.name, email: email.email})
+          .then((res) => {
+            if (res.status === 409) {
+              setError('Пользователь с такой почтой уже зарегистрирован')
+              throw new Error('Пользователь с такой почтой уже зарегестрирован')
+            }
+            res.json()
+              .then((res) => {
+                setCurrentUser({name: res.name, email: res.email})
+                setSuccess(true);
+              })
             })
+          .catch(err => {
+            console.log('err =>', err)
           })
-        .catch(err => {
-          console.log('err =>', err)
-        })
+      }
     }
+
   }
 
   useEffect(() => {
@@ -111,7 +115,7 @@ function Profile({onLogout}) {
             </div>
             {emailValidity === 'not valid' && email.entered && <ErrorMessage errorText='Введен неверный email.' />}
             { error && <ErrorMessage errorText={error} />}
-            { success && <SuccessMessage successText='Данные пользователя успешно обновлены'/>}
+            { success && <SuccessMessage successText='Данные профиля успешно обновлены'/>}
           </form>
           <button form='editForm' className='profile__btn profile__edit-btn' href='ya.ru' type='submit' onClick={handleEditFormSubmit}>Редактировать</button>
           <button className='profile__btn profile__signout-btn' href='ya.ru' type='button' onClick={signout}>Выйти из аккаунта</button>
