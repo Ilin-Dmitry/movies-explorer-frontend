@@ -127,7 +127,7 @@
 }
 
 .page__auth-input::placeholder {
-  color: #fff;
+  color: #555;
 }
 
 .page__auth-input:focus {
