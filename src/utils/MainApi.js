@@ -66,9 +66,6 @@ export function signinUser({email, password}) {
     },
     body: JSON.stringify({ email: email, password: password })
   })
-    .catch(err => {
-      console.log('Произошла ошибка ', err)
-    })
 }
 
 export function editUserProfile({name, email}) {
