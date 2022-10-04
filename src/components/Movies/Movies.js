@@ -22,17 +22,28 @@ function Movies() {
     setIsMoviesShown(false)
     setError('')
     if (movieToFind !== '') {
-      getMovies()
-      .then((res) => {
-        setCards(showSearchResult(res, movieToFind))
+      if (localStorage.movieBase) {
+        setCards(showSearchResult(JSON.parse(localStorage.movieBase), movieToFind))
         localStorage.search = movieToFind;
-        localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
+        localStorage.found = JSON.stringify(showSearchResult(JSON.parse(localStorage.movieBase), movieToFind, movieToFind));
+        console.log('localStorage.found =>', JSON.parse(localStorage.found));
         localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
         setIsMoviesShown(true)
-      })
-      .catch(() => {
-        setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-      })
+      } else {
+        getMovies()
+        .then((res) => {
+          localStorage.movieBase = JSON.stringify(res);
+          setCards(showSearchResult(res, movieToFind))
+          localStorage.search = movieToFind;
+          localStorage.found = JSON.stringify(showSearchResult(res, movieToFind));
+          console.log('localStorage.found =>', JSON.parse(localStorage.found));
+          localStorage.shortFilmCheck = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
+          setIsMoviesShown(true)
+        })
+        .catch(() => {
+          setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+        })
+      }
     }
     else {
       setError('Нужно ввести ключевое слово')
