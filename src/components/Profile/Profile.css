@@ -89,6 +89,7 @@
 
 .profile__form-input::placeholder {
   color: #fff;
+  opacity: .5;
 }
 
 .profile__input-label {

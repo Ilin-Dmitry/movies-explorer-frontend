@@ -46,11 +46,13 @@ function App() {
         })
   }
 
-  function handleSetIsLoggedIn() {
+  function handleSetIsLoggedIn({name, email}) {
+    setUser({name, email})
     setIsLogged(true);
   }
 
   function handleSetIsLoggedOut() {
+    setUser({});
     setIsLogged(false);
   }
 

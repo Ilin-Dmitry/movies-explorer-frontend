@@ -61,11 +61,15 @@ function Register({onSignup}) {
           throw new Error('Пользователь с такой почтой уже зарегестрирован')
         } else if (res.ok) {
           signinUser({ email: email.email, password: password.password })
-            .then(() => {
-              onSignup()
+            .then((res) => {
+              return res.json()
+            })
+            .then((res) => {
+              onSignup({ email: res.email, name: res.name })
               history.push('/movies')
             })
             .catch((err) => {
+              setError('Что-то пошло не так, попробуйте еще раз позже');
               console.log('Ошибка ', err);
             })
         } else {
@@ -74,6 +78,7 @@ function Register({onSignup}) {
         }
       })
       .catch(err => {
+        setError('Что-то пошло не так, попробуйте еще раз позже');
         console.log('err => ', err);
       })
     }

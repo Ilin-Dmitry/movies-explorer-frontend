@@ -32,10 +32,12 @@ function Profile({onLogout}) {
   }
 
   function handleSetEmail(evt) {
+    setSuccess('')
     setEmail({email: evt.target.value, entered: true})
   }
 
   function handleSetName(evt) {
+    setSuccess('')
     setName({name: evt.target.value, entered: true})
   }
 
@@ -92,8 +94,10 @@ function Profile({onLogout}) {
   }
 
   useEffect(() => {
-    checkEmailValidity()
-    checkNameValidity()
+    if (currentUser.email && currentUser.name) {
+      checkEmailValidity()
+      checkNameValidity()
+    }
     setEditBtnActive()
   })
 
@@ -106,19 +110,19 @@ function Profile({onLogout}) {
           <form id='editForm' className='profile__form' onSubmit={handleEditFormSubmit}>
             <div className='profile__input-wrapper'>
               <label htmlFor="profile-name" className='profile__input-label'>Имя</label>
-              <input className='profile__form-input' id="profile-name" placeholder={currentUser.name} value={name.name} onChange={handleSetName} type='text'/>
+              <input className='profile__form-input' id="profile-name" placeholder='Введите имя' value={name.name} onChange={handleSetName} type='text'/>
             </div>
             {nameValidity === 'not valid' && name.entered && <ErrorMessage errorText='Имя пользователя должно быть от 2 до 30 символов, содержать только латиницу, кириллицу, пробел или дефис.' />}
             <div className='profile__input-wrapper profile__input-wrapper_last'>
               <label htmlFor="profile-mail" className='profile__input-label'>E-mail</label>
-              <input className='profile__form-input' id="profile-mail" placeholder={currentUser.email} value={email.email} onChange={handleSetEmail} type='email' />
+              <input className='profile__form-input' id="profile-mail" placeholder='Введите e-mail' value={email.email} onChange={handleSetEmail} type='email' />
             </div>
             {emailValidity === 'not valid' && email.entered && <ErrorMessage errorText='Введен неверный email.' />}
             { error && <ErrorMessage errorText={error} />}
             { success && <SuccessMessage successText='Данные профиля успешно обновлены'/>}
           </form>
-          <button form='editForm' className='profile__btn profile__edit-btn' href='ya.ru' type='submit' onClick={handleEditFormSubmit}>Редактировать</button>
-          <button className='profile__btn profile__signout-btn' href='ya.ru' type='button' onClick={signout}>Выйти из аккаунта</button>
+          <button form='editForm' className='profile__btn profile__edit-btn' type='submit' onClick={handleEditFormSubmit}>Редактировать</button>
+          <button className='profile__btn profile__signout-btn' type='button' onClick={signout}>Выйти из аккаунта</button>
         </div>
       </main>
     </section>

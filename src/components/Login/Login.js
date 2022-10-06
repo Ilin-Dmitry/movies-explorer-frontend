@@ -42,8 +42,11 @@ function Login({onLogin}) {
       signinUser({ email: email.email, password: password.password })
         .then((res) => {
           if (res.ok) {
-            onLogin()
-            history.push('./movies');
+            return res.json()
+              .then((res) => {
+                onLogin({ email: res.email, name: res.name })
+                history.push('./movies');
+              })
           } else {
             setError('Неверные email или пароль');
           }
