@@ -25,6 +25,8 @@ function App() {
         })
         .then(text => {
           if(text === 'false') {
+            localStorage.clear();
+            setUser({});
             setIsLogged(false)
             return false
           }
@@ -40,7 +42,9 @@ function App() {
                   setIsLogged(true);
                 })
                 .catch(error => {
-                  setIsLogged(false)
+                  localStorage.clear();
+                  setUser({});
+                  setIsLogged(false);
                 })
             }
         })
