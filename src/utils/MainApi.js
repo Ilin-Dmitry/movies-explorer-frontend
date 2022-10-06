@@ -1,3 +1,4 @@
+import { validateLink } from "./validateData";
 const BASE_URL = 'http://localhost:3001';
 
 export function checkCookieWithToken() {
@@ -121,17 +122,17 @@ export function saveMovie(info) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      country,
-      director,
-      duration,
-      year,
-      description,
-      image,
-      trailerLink,
-      nameRU,
-      nameEN,
-      thumbnail,
-      movieId,
+      country: country && typeof(country) === 'string' ? country : 'No info',
+      director: director && typeof(director) === 'string' ? director : 'No info',
+      duration: duration && typeof(duration) === 'number' ? duration : 0,
+      year: year && typeof(year) === 'string' ? year : 'No info',
+      description: description && typeof(description) === 'string' ? description : 'No info',
+      image: image && validateLink(image) ? image : 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg',
+      trailerLink: trailerLink && validateLink(trailerLink) ? trailerLink : 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg',
+      nameRU: nameRU && typeof(nameRU) === 'string' ? nameRU : 'No info',
+      nameEN: nameEN && typeof(nameEN) === 'string' ? nameEN : 'No info',
+      thumbnail: thumbnail && validateLink(thumbnail) ? thumbnail : 'https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg',
+      movieId: movieId && typeof(movieId) === 'number' ? movieId : 0,
     })
   })
   .then((res) => {

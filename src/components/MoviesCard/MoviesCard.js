@@ -9,13 +9,10 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
     setError('');
     const movieCard = e.target;
     movieCard.classList.add('moviescard__like_liked');
-    console.log('info on like', info);
     saveMovie(info)
       .then(savedMovie => {
-        console.log('дошло сюда');
         info._id = savedMovie._id})
       .catch(() => {
-        console.log('дошло туда');
         setError('Произошла ошибка, попробуйте позже')
       })
   }
