@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './MoviesCard.css';
-import { saveMovie, deleteMovie } from '../../utils/MainApi';
+import { saveMovie, deleteMovie, getSavedMovies } from '../../utils/MainApi';
 import TopErrorMessage from '../TopErrorMessage/TopErrorMessage';
 
 function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, link}) {
@@ -12,6 +12,12 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
         info._id = savedMovie._id;
         const movieCard = e.target;
         movieCard.classList.add('moviescard__like_liked');
+      })
+      .then(() => {
+        getSavedMovies()
+        .then((res) => {
+          localStorage.savedCards = JSON.stringify(res)
+        })
       })
       .catch(() => {
         setError('Произошла ошибка, попробуйте позже')
@@ -25,6 +31,33 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
     .then(() => {
       const movieCard = e.target;
       movieCard.classList.remove('moviescard__like_liked');
+    })
+    .then(() => {
+      getSavedMovies()
+      .then((res) => {
+        localStorage.savedCards = JSON.stringify(res)
+        onDislike()
+      })
+    })
+    .catch(() => {
+      setError('Произошла ошибка, попробуйте позже')
+    })
+  }
+
+  function handleDeleteCard(e) {
+    setError('');
+    // onDislike();
+    deleteMovie(info._id)
+    .then(() => {
+      const movieCard = e.target;
+      movieCard.classList.remove('moviescard__like_liked');
+    })
+    .then(() => {
+      getSavedMovies()
+      .then((res) => {
+        localStorage.savedCards = JSON.stringify(res)
+        // onDislike()
+      })
     })
     .catch(() => {
       setError('Произошла ошибка, попробуйте позже')
@@ -40,23 +73,29 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
     }
   }
 
-  function handleDeleteCard() {
-    setError('');
-    deleteMovie(info._id)
-      .then((res) => {
-        onDislike()
-      })
-      .then(() => {
-        const oldSavedCards = JSON.parse(localStorage.foundSaved);
-        const newSavedCards = oldSavedCards.filter(item => {
-          return item._id !== info._id
-        })
-        localStorage.foundSaved = JSON.stringify(newSavedCards);
-      })
-      .catch(() => {
-        setError('Произошла ошибка, попробуйте позже')
-      })
-  }
+
+// --------------------------------------------
+// !!!!!!!!!!!!Удалить, если все работает!!!!!!
+// --------------------------------------------
+  // function handleDeleteCard() {
+  //   setError('');
+  //   deleteMovie(info._id)
+  //     .then((res) => {
+  //       onDislike()
+  //     })
+  //     .then(() => {
+  //       const oldSavedCards = JSON.parse(localStorage.foundSaved);
+  //       const newSavedCards = oldSavedCards.filter(item => {
+  //         return item._id !== info._id
+  //       })
+  //       localStorage.foundSaved = JSON.stringify(newSavedCards);
+  //     })
+  //     .catch(() => {
+  //       setError('Произошла ошибка, попробуйте позже')
+  //     })
+  // }
+
+
   return (
     <div className='moviescard'>
       {error && <TopErrorMessage errorText={error} />}

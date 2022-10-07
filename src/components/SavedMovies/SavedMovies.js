@@ -26,50 +26,36 @@ function SavedMovies() {
     function handleSubmitSearchForm() {
       setIsMoviesShown(false)
       setError('')
-      getSavedMovies()
+      if (localStorage.savedCards) {
+        setSavedCards(showSearchResult(JSON.parse(localStorage.savedCards), movieToFind))
+        localStorage.searchedSavedCards = showSearchResult(JSON.parse(localStorage.savedCards), movieToFind)
+        localStorage.shortFilmCheckSaved = JSON.stringify(false);
+      } else {
+        getSavedMovies()
         .then((res) => {
           setSavedCards(showSearchResult(res, movieToFind))
-            // -------------------------------------------------- //
-            // Раскомментировать для сохранения данных последнего поиска на странице «Сохранённые фильмы»
-            // -------------------------------------------------- //
-            // localStorage.searchSaved = movieToFind;
-            // localStorage.foundSaved = JSON.stringify(showSearchResult(res, movieToFind));
-            // localStorage.shortFilmCheckSaved = JSON.stringify(document.querySelector('.filtercheckbox__input').checked);
-            localStorage.shortFilmCheckSaved = JSON.stringify(false);
-          setIsMoviesShown(true)
+          localStorage.searchedSavedCards = showSearchResult(res, movieToFind)
         })
         .catch(() => {
           setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         })
+      }
+      setIsMoviesShown(true)
   }
 
-  // -------------------------------------------------- //
-  // Раскомментировать для сохранения данных последнего поиска на странице «Сохранённые фильмы»
-  // -------------------------------------------------- //
-  // useEffect(() => {
-  //   getSavedMovies()
-  //     .then((res) => {
-  //       if(localStorage.foundSaved) {
-  //         setMovieToFind(localStorage.searchSaved)
-  //         setSavedCards(showSearchResult(res, localStorage.searchSaved));
-  //       }
-  //       else {
-  //         setSavedCards(res)}
-  //     })
-  //     .catch(() => {
-  //       setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-  //     })
-  //     setListRefreshed(false)
-  // }, [listRefreshed])
-
   useEffect(() => {
-    getSavedMovies()
+    if(localStorage.savedCards) {
+      setSavedCards(JSON.parse(localStorage.savedCards))
+    } else {
+      getSavedMovies()
       .then((res) => {
         setSavedCards(res)
+        localStorage.savedCards = JSON.stringify(res);
       })
       .catch(() => {
         setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
       })
+    }
       setListRefreshed(false)
   }, [listRefreshed])
 

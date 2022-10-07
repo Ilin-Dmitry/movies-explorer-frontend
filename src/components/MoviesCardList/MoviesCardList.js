@@ -43,13 +43,18 @@ function MoviesCardList({type, cards, onRefresh}) {
     setCardsNumber();
     window.addEventListener('resize', setCardsNumber)
     setError('')
-    getSavedMovies()
-      .then((movieList) => {
-        setSavedMoviesList(movieList)
-      })
-      .catch((err) => {
-        setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
-      })
+    if (localStorage.savedCards) {
+      setSavedMoviesList(JSON.parse(localStorage.savedCards))
+    } else {
+      getSavedMovies()
+        .then((movieList) => {
+          setSavedMoviesList(movieList)
+        })
+        .catch((err) => {
+          setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+        })
+    }
+
     return () => {
       window.removeEventListener('resize', setCardsNumber);
     };
