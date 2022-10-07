@@ -46,7 +46,6 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
 
   function handleDeleteCard(e) {
     setError('');
-    // onDislike();
     deleteMovie(info._id)
     .then(() => {
       const movieCard = e.target;
@@ -72,29 +71,6 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
       handleLikeCard(e)
     }
   }
-
-
-// --------------------------------------------
-// !!!!!!!!!!!!Удалить, если все работает!!!!!!
-// --------------------------------------------
-  // function handleDeleteCard() {
-  //   setError('');
-  //   deleteMovie(info._id)
-  //     .then((res) => {
-  //       onDislike()
-  //     })
-  //     .then(() => {
-  //       const oldSavedCards = JSON.parse(localStorage.foundSaved);
-  //       const newSavedCards = oldSavedCards.filter(item => {
-  //         return item._id !== info._id
-  //       })
-  //       localStorage.foundSaved = JSON.stringify(newSavedCards);
-  //     })
-  //     .catch(() => {
-  //       setError('Произошла ошибка, попробуйте позже')
-  //     })
-  // }
-
 
   return (
     <div className='moviescard'>

@@ -29,7 +29,6 @@ function SavedMovies() {
       if (localStorage.savedCards) {
         setSavedCards(showSearchResult(JSON.parse(localStorage.savedCards), movieToFind))
         localStorage.searchedSavedCards = JSON.stringify(showSearchResult(JSON.parse(localStorage.savedCards), movieToFind))
-        // localStorage.shortFilmCheckSaved = JSON.stringify(false);
       } else {
         getSavedMovies()
         .then((res) => {

@@ -82,6 +82,8 @@ function Profile({onLogout}) {
             res.json()
               .then((res) => {
                 setCurrentUser({name: res.name, email: res.email})
+                user.name = res.name;
+                user.email = res.email;
                 setSuccess(true);
               })
             })
