@@ -26,7 +26,7 @@ function MoviesCardList({type, cards, onRefresh}) {
     if (screenWidth >= BREAKPOINT_TABLET) {
       setMaxCards(CARDS_TO_SHOW_DESKTOP)
       setAddCards(CARDS_TO_ADD_DESKTOP)
-    } else if (screenWidth >= BREAKPOINT_MOBILE) {
+    } else if (screenWidth >= BREAKPOINT_MOBILE ) {
       setMaxCards(CARDS_TO_SHOW_TABLET)
       setAddCards(CARDS_TO_ADD_TABLET)
     } else {

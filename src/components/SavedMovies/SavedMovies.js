@@ -28,13 +28,14 @@ function SavedMovies() {
       setError('')
       if (localStorage.savedCards) {
         setSavedCards(showSearchResult(JSON.parse(localStorage.savedCards), movieToFind))
-        localStorage.searchedSavedCards = showSearchResult(JSON.parse(localStorage.savedCards), movieToFind)
-        localStorage.shortFilmCheckSaved = JSON.stringify(false);
+        localStorage.searchedSavedCards = JSON.stringify(showSearchResult(JSON.parse(localStorage.savedCards), movieToFind))
+        // localStorage.shortFilmCheckSaved = JSON.stringify(false);
       } else {
         getSavedMovies()
         .then((res) => {
           setSavedCards(showSearchResult(res, movieToFind))
-          localStorage.searchedSavedCards = showSearchResult(res, movieToFind)
+          localStorage.searchedSavedCards = JSON.stringify(showSearchResult(res, movieToFind))
+
         })
         .catch(() => {
           setError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')

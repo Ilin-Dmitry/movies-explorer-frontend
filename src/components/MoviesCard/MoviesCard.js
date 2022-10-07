@@ -56,7 +56,7 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
       getSavedMovies()
       .then((res) => {
         localStorage.savedCards = JSON.stringify(res)
-        // onDislike()
+        onDislike()
       })
     })
     .catch(() => {

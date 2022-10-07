@@ -2,6 +2,7 @@ import './FilterCheckbox.css';
 
 function FilterCheckbox({onClick, origin}) {
   const checkInStorage = origin === 'saved' ? localStorage.shortFilmCheckSaved : localStorage.shortFilmCheck;
+  console.log('checkIn Storage', checkInStorage);
   function handleClick() {
     onClick()
   }
