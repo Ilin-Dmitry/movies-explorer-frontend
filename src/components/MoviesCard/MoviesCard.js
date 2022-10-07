@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import './MoviesCard.css';
 import { saveMovie, deleteMovie } from '../../utils/MainApi';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import TopErrorMessage from '../TopErrorMessage/TopErrorMessage';
 
 function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, link}) {
   const [error, setError] = useState('');
   function handleLikeCard(e) {
     setError('');
-    const movieCard = e.target;
-    movieCard.classList.add('moviescard__like_liked');
     saveMovie(info)
       .then(savedMovie => {
-        info._id = savedMovie._id})
+        info._id = savedMovie._id;
+        const movieCard = e.target;
+        movieCard.classList.add('moviescard__like_liked');
+      })
       .catch(() => {
         setError('Произошла ошибка, попробуйте позже')
       })
@@ -21,11 +22,13 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
     setError('');
     onDislike();
     deleteMovie(info._id)
+    .then(() => {
+      const movieCard = e.target;
+      movieCard.classList.remove('moviescard__like_liked');
+    })
     .catch(() => {
       setError('Произошла ошибка, попробуйте позже')
     })
-    const movieCard = e.target;
-    movieCard.classList.remove('moviescard__like_liked');
   }
 
   function handleToggleLikeCard(e) {
@@ -56,11 +59,12 @@ function MoviesCard ({poster, title, duration, type, info, isLiked, onDislike, l
   }
   return (
     <div className='moviescard'>
+      {error && <TopErrorMessage errorText={error} />}
       <a href={link} target='_blank' rel='noreferrer' ><img  className='moviescard__cover' src={poster} alt="photod" /></a>
       <div className='moviescard__info'>
         <p className='moviescard__caption'>{title}</p>
         {type === 'saved' ? <button className='moviescard__delete' type='button' onClick={handleDeleteCard}></button> : <button className={`moviescard__like ${isLiked ? 'moviescard__like_liked' : ''}`} type='button' onClick={handleToggleLikeCard}></button> }
-        {!(error) ? <p className='moviescard__length'>{duration}</p> : <ErrorMessage errorText={error} />}
+        <p className='moviescard__length'>{duration}</p>
       </div>
     </div>
   )
