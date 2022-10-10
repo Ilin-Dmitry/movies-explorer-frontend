@@ -4,3 +4,4 @@
 
 
 ## [Ссылка на репозиторий](https://mesto.dmilin.nomoredomains.sbs/)
+## [Ссылка на пул реквест](https://github.com/Ilin-Dmitry/movies-explorer-frontend/pull/2)

@@ -43,6 +43,24 @@
   }
 }
 
+.login__form-button {
+  opacity: .5;
+  cursor: default;
+}
+
+.login__form-button:hover {
+  opacity: .5;
+}
+
+.login__form-button_active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.login__form-button_active:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 550px) {
   .login__form-button {
     font-size: 12px;

@@ -1,0 +1,53 @@
+.toperrormessage {
+  z-index: 100;
+  display: block;
+  position: fixed;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  background-color: #151515;
+  opacity: 0;
+  transition: opacity .5s ease, top .5s ease;
+}
+
+.toperrormessage_active {
+  top: 0;
+  opacity: 1;
+  transition: opacity .5s ease, top .5s ease;
+}
+
+.toperrormessage__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toperrormessage__text {
+  color: #EE3465;
+  font-size: 14px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.toperrormessage__close-btn {
+  background: none;
+  border: none;
+  display: block;
+  width: 28px;
+  height: 24px;
+  background-image: url('../../images/delete-icon.svg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .2s ease;
+}
+
+.toperrormessage__close-btn:hover {
+  opacity: .5;
+}
+
+.toperrormessage__close-btn:active {
+  opacity: .3;
+}
