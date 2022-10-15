@@ -3,5 +3,5 @@
 Репозиторий для фронтенда дипломной работы
 
 
-## [Ссылка на репозиторий](https://mesto.dmilin.nomoredomains.sbs/)
-## [Ссылка на пул реквест](https://github.com/Ilin-Dmitry/movies-explorer-frontend/pull/2)
+## [Ссылка на сайт](https://mesto.dmilin.nomoredomains.sbs/)
+## [Ссылка на пул репозиторий](https://github.com/Ilin-Dmitry/movies-explorer-frontend)
