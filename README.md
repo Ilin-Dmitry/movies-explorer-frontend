@@ -4,4 +4,4 @@
 
 
 ## [Ссылка на сайт](https://mesto.dmilin.nomoredomains.sbs/)
-## [Ссылка на пул репозиторий](https://github.com/Ilin-Dmitry/movies-explorer-frontend)
+## [Ссылка на репозиторий](https://github.com/Ilin-Dmitry/movies-explorer-frontend)
